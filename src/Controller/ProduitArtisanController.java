@@ -272,7 +272,7 @@ public class ProduitArtisanController implements Initializable {
         primary.setScene(scene2);
         primary.show();
         Stage primaryStage=new Stage();
-        Parent root = FXMLLoader.load(getClass().getResource("/gui/admincommande.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/pi/gui/admincommande.fxml"));
         Scene scene = new Scene(root);
         primaryStage.setTitle("Commande à confirmer!");
         primaryStage.setScene(scene);

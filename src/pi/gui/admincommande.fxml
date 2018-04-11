@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="597.0" prefWidth="810.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.AdmincommandeController">
+   <children>
+      <Button fx:id="confirmer" layoutX="36.0" layoutY="284.0" mnemonicParsing="false" onAction="#confirmercommande" prefHeight="25.0" prefWidth="102.0" text="confirmer" />
+      <Button fx:id="refuser" layoutX="193.0" layoutY="284.0" mnemonicParsing="false" onAction="#refusercommande" prefHeight="25.0" prefWidth="90.0" text="refuser" />
+      <Button fx:id="afficher" layoutX="455.0" layoutY="284.0" mnemonicParsing="false" onAction="#affichercommande" prefHeight="25.0" prefWidth="90.0" text="afficher" />
+      <Text fx:id="artisan" layoutX="14.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="artisan" wrappingWidth="70.13671875" />
+      <TableView fx:id="affichage" layoutX="35.0" layoutY="43.0" prefHeight="174.0" prefWidth="741.0">
+        <columns>
+          <TableColumn fx:id="nom" prefWidth="75.0" text="nom" />
+          <TableColumn fx:id="prenom" prefWidth="75.0" text="prenom" />
+            <TableColumn fx:id="adresse" prefWidth="173.0" text="adresse" />
+            <TableColumn fx:id="idProduit" prefWidth="327.0" text="Produit" />
+            <TableColumn fx:id="idUser" prefWidth="373.0" text="User" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>
