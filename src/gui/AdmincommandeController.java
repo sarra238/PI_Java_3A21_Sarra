@@ -6,15 +6,12 @@
 package gui;
 
 import static utils.util.somme;
-import Entities.Produit;
-import Entities.User;
 import Entities.confcommande;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javafx.animation.PauseTransition;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -26,14 +23,9 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.text.Text;
-import javafx.util.Duration;
 import services.Serviceconfcommande1;
 import services.ServiceProduit;
 import services.ServiceProduitm;
-import services.UserService;
-import static services.UserService.conn;
-import utils.SmsInscriConfirmCom;
-import utils.util;
 
 /**
  * FXML Controller class
@@ -96,9 +88,9 @@ public class AdmincommandeController implements Initializable
       affichage.setEditable(true);
       int selectedIndex = affichage.getSelectionModel().getSelectedIndex();
        confcommande a = affichage.getSelectionModel().getSelectedItem();
-       int u;
+       Double u;
         ServiceProduit us=new ServiceProduit();
-       u=(int) us.RechercherAnnonceById(a.getIdP());
+       u= us.RechercherAnnonceById(a.getIdP());
        if (selectedIndex >= 0) {
           affichage.getItems().remove(selectedIndex);
           // System.out.println(x);

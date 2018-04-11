@@ -51,7 +51,7 @@ public class ServiceProduit {
         try {
             PreparedStatement pt;
             String query = "select prix from produit where id='"+id+"'";
-            pt=ds.PrepareStatement(query);
+            pt=ds.getConnection().prepareStatement(query);
             ResultSet rs = pt.executeQuery();
             Produit a = new Produit();
             if (rs.next()) {
