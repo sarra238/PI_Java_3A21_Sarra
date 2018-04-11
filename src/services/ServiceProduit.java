@@ -47,10 +47,26 @@ public class ServiceProduit {
             System.out.println(ex);
         }
     }
+    public double RechercherAnnonceById(int id) {
+        try {
+            PreparedStatement pt;
+            String query = "select prix from produit where id='"+id+"'";
+            pt=ds.PrepareStatement(query);
+            ResultSet rs = pt.executeQuery();
+            Produit a = new Produit();
+            if (rs.next()) {
+                a.setPrix(rs.getInt(1));
+                return a.getPrix();
+            }
+        } catch (SQLException ex) {
+                System.out.println("erreur lors de la recherche de l'annonce " + ex.getMessage());
+        }   
+        return 0;
+    }
     
     public static void updateProduit(Produit o) {
         try {
-            String req = "UPDATE Produit SET nomproduit=?,region=?, categorie=?,stock =?,prix=?,description=?,datelancement=?,nomImage=?,longitude=?,etat=?,attitude=? where id='"+o.getId()+"'and idUser='"+conn+"'";
+            String req = "UPDATE Produit SET nomproduit=?,region=?, categorie=?,stock =?,prix=?,description=?,datelancement=?,nomImage=?,longitude=?,attitude=? where id='"+o.getId()+"'and idUser='"+conn+"'";
 
             PreparedStatement ste = ds.getConnection().prepareStatement(req);
             ste.setString(1, o.getNomProduit());
@@ -62,8 +78,7 @@ public class ServiceProduit {
             ste.setString(7, o.getDateLancement());
             ste.setString(8, o.getNomImage());
             ste.setDouble(9, o.getLongitude());
-            ste.setInt(10, 1);
-            ste.setDouble(11, o.getAttitude());
+            ste.setDouble(10, o.getAttitude());
 
             ste.executeUpdate();
         } catch (SQLException ex) {

@@ -6,10 +6,13 @@
 package services;
 
 
+import Controller.ProduitClientController;
+import static Controller.ProduitClientController.pstat;
 import static utils.util.pr;
 import static utils.util.user;
 import Entities.Produit;
 import Entities.confcommande;
+import static gui.AjoutcommandeController.pCom;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -17,6 +20,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import static services.UserService.conn;
 import utils.MyConnection;
 
 
@@ -61,14 +65,14 @@ public class Serviceconfcommande1 {
       public void ajouterC(confcommande g) throws SQLException {
 
 
-        String req = "INSERT INTO `confcommande` ( `nom`, `prenom`,`adresse`,`idProduit`,`iduser`)" + " VALUES (?,?,?,?,?)";
+        String req = "INSERT INTO `confcommande` ( `nom`, `prenom`,`adresse`,`idProduit`,`idUser`)" + " VALUES (?,?,?,?,?)";
         PreparedStatement pre = con.prepareStatement(req);
 
         pre.setString(1, g.getNom());
         pre.setString(2, g.getPrenom());
         pre.setString(3, g.getAdresse());
-        pre.setInt(4, pr.getId());
-        pre.setInt(5, user.getId());
+        pre.setInt(4, pCom.getId());
+        pre.setInt(5, conn);
         pre.executeUpdate();
         System.out.println("ajout meryem mmm avec succées");
 
@@ -89,8 +93,8 @@ public class Serviceconfcommande1 {
         pre.setString(1, c.getNom());
         pre.setString(2, c.getPrenom());
         pre.setString(3, c.getAdresse());
-        pre.setInt(4, c.getProduit().getId());
-        pre.setInt(5, 55);
+        pre.setInt(4, c.getIdP());
+        pre.setInt(5, c.getUser());
  //      System.out.println(c.getUser().getId());
     }
  
@@ -103,30 +107,20 @@ public class Serviceconfcommande1 {
   public ObservableList<confcommande> afficherconfcommande()  throws SQLException
   {
   ObservableList<confcommande> ls = FXCollections.observableArrayList();
-   String sql="SELECT * FROM confcommande ";
+   String sql="SELECT nom,prenom,adresse,idProduit,idUser FROM confcommande ";
     //String sql="SELECT NomProduit,Region,Categorie,Prix FROM produit where etat=1";
    
-    Statement ste=con.createStatement();
+   ste=con.createStatement();
     ResultSet rs=ste.executeQuery(sql);
     while(rs.next())
     {                 confcommande p = new confcommande();
    
-      p.setNom(rs.getString(1));
+        p.setNom(rs.getString(1));
         p.setPrenom(rs.getString(2));
         p.setAdresse(rs.getString(3));
-               
-        int nomProduit = rs.getInt(4);
-        //  int idUser=rs.getInt(5);
-                       ServiceProduitm daoProduit = ServiceProduitm.getInstance();
-                 UserService Use = UserService.getInstance();
-               
-              //  prod =daoUser.findProduitById(id);
-                
-                p.setProduit(daoProduit.findProduitById(nomProduit));
-               p.setUser(user);
-// confcommande   p=new confcommande(rs.getString(1),rs.getString(2),rs.getString(3));
- //produit= p.getProduit();
-    ls.add(p); 
+        p.setIdP(rs.getInt(4));
+        p.setUser(rs.getInt(5));
+        ls.add(p); 
     }
     return ls;
     

@@ -34,7 +34,7 @@ private int idUser;
     }
 
 
-    public Produit(String NomProduit, String Region, String Categorie, int Stock, double Prix, String Description, double longitude, double attitude) {
+    public Produit(int id,String NomProduit, String Region, String Categorie, int Stock, double Prix, String Description, double longitude, double attitude) {
         this.NomProduit = NomProduit;
         this.Region = Region;
         this.Categorie = Categorie;
@@ -43,6 +43,7 @@ private int idUser;
         this.Description = Description;
         this.longitude = longitude;
         this.attitude = attitude;
+        this.id=id;
     }
 
     public Produit(String NomProduit, String Region, String Categorie, int Stock) {

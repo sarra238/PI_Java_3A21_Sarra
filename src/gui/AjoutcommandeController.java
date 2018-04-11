@@ -24,11 +24,14 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.text.Text;
 import Entities.Produit;
+import Entities.User;
 import Entities.confcommande;
 import javafx.scene.Node;
 import javafx.stage.Stage;
 import services.ServiceProduitm;
 import services.Serviceconfcommande1;
+import services.UserService;
+import static services.UserService.conn;
 import static utils.util.pr;
 import static utils.util.user;
 
@@ -38,7 +41,7 @@ import static utils.util.user;
  * @author dell
  */
 public class AjoutcommandeController implements Initializable {
-
+ public static Produit pCom;
     @FXML
     private Button afficher1;
     @FXML
@@ -72,6 +75,8 @@ public class AjoutcommandeController implements Initializable {
     @FXML
     private Button retour;
      ObservableList<Produit> listpc = FXCollections.observableArrayList();
+    @FXML
+    private Label id;
 
     /**
      * Initializes the controller class.
@@ -79,15 +84,19 @@ public class AjoutcommandeController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb)
     {
-         nom2.setText(user.getFname());
-        prenom2.setText(user.getLname());
-        adresse2.setText(user.getAddress());
+        User u;
+        UserService us=new UserService();
+        u=us.RechercherUsertById(conn);
+         nom2.setText(u.getFname());
+        prenom2.setText(u.getLname());
+        adresse2.setText(u.getAddress());
                NomProduit.setCellValueFactory(new PropertyValueFactory<>("NomProduit"));
        Region.setCellValueFactory(new PropertyValueFactory<>("Region"));
         Categorie.setCellValueFactory(new PropertyValueFactory<>("Categorie"));
      
         Prix.setCellValueFactory(new PropertyValueFactory<>("Prix"));
                id11.setCellValueFactory(new PropertyValueFactory<>("id"));
+              
 
        ServiceProduitm sp= new ServiceProduitm();
    try{
@@ -95,11 +104,16 @@ public class AjoutcommandeController implements Initializable {
   
     afficherprocommande.setItems(listpc);
 
-       
+        
          
     }catch (SQLException ex) {
             Logger.getLogger(ServiceProduitm.class.getName()).log(Level.SEVERE, null, ex);
        }
+   afficherprocommande.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
+    if (newSelection != null) {
+                       pCom=newSelection;
+                     System.out.println(newSelection.getId());
+                       }});
         
     }    
 
@@ -126,7 +140,7 @@ else if (selectedIndex >= 0)
 { 
             afficherprocommande.getItems().remove(selectedIndex);
   
-        confcommande c = new confcommande(nom2.getText(), prenom2.getText(), adresse2.getText(),pr,user);
+        confcommande c = new confcommande(nom2.getText(), prenom2.getText(), adresse2.getText(),pCom.getId(),conn);
         sp.ajouterC(c);
            nom2.setText("");
            prenom2.setText("");

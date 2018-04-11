@@ -54,7 +54,7 @@ public ObservableList<Produit> afficher()  throws SQLException
     ResultSet rs=ste.executeQuery(sql);
     while(rs.next())
     {
-    p=new Produit(rs.getString(2),rs.getString(3),rs.getString(4),rs.getInt(5),rs.getDouble(6),rs.getString(7),rs.getDouble(10),rs.getDouble(12));
+    p=new Produit(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getInt(5),rs.getDouble(6),rs.getString(7),rs.getDouble(10),rs.getDouble(12));
     ls.add(p); 
     }
     return ls;
@@ -65,7 +65,7 @@ public ObservableList<Produit> afficher()  throws SQLException
 public void approuver(double longitude) {
 
         try {
-            String req = ("update produit set Etat=1 where longitude="+longitude);
+            String req = "update produit set Etat=1 where longitude='"+longitude+"'";
             PreparedStatement pre = con.prepareStatement(req);
             pre.executeUpdate();
             System.out.println("ajout ");
@@ -75,11 +75,24 @@ public void approuver(double longitude) {
 
     }
 ////************************************************************************
-public void approuverdelate(double Prix) 
+public void approuverdelate(confcommande connn) 
 {
 
         try {
-            String req = ("update produit set Etat=0 where Prix="+ Prix);
+            String req2 = "delete confcommande where nom='"+connn.getNom()+"'";
+            PreparedStatement pre2 = con.prepareStatement(req2);
+            pre2.executeUpdate();
+            System.out.println("supmeryem ");
+        } catch (SQLException ex) {
+            Logger.getLogger(ServiceProduitm.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+public void approuverdelate2(double Prix) 
+{
+
+        try {
+            String req = "update produit set Etat=0 where Prix='"+Prix+"'";
             PreparedStatement pre = con.prepareStatement(req);
             pre.executeUpdate();
             System.out.println("supmeryem ");
@@ -114,7 +127,7 @@ public void approuverdelate(double Prix)
     ResultSet rs=ste.executeQuery(sql);
     while(rs.next())
     {
-    p=new Produit(rs.getString(2),rs.getString(3),rs.getString(4),rs.getInt(5),rs.getDouble(6),rs.getString(7),rs.getDouble(10),rs.getDouble(12));
+    p=new Produit(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getInt(5),rs.getDouble(6),rs.getString(7),rs.getDouble(10),rs.getDouble(12));
     ls.add(p); 
     }
     return ls;
@@ -226,7 +239,7 @@ public void approuverdelate(double Prix)
            
                 while(rs.next())
     {
-    p=new Produit(rs.getString(2),rs.getString(3),rs.getString(4),rs.getInt(5),rs.getDouble(6),rs.getString(7),rs.getDouble(10),rs.getDouble(12));
+    p=new Produit(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getInt(5),rs.getDouble(6),rs.getString(7),rs.getDouble(10),rs.getDouble(12));
     ls.add(p); 
     }
   

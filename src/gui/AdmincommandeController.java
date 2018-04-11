@@ -7,6 +7,7 @@ package gui;
 
 import static utils.util.somme;
 import Entities.Produit;
+import Entities.User;
 import Entities.confcommande;
 import java.net.URL;
 import java.sql.SQLException;
@@ -29,6 +30,9 @@ import javafx.util.Duration;
 import services.Serviceconfcommande1;
 import services.ServiceProduit;
 import services.ServiceProduitm;
+import services.UserService;
+import static services.UserService.conn;
+import utils.SmsInscriConfirmCom;
 import utils.util;
 
 /**
@@ -70,12 +74,12 @@ public class AdmincommandeController implements Initializable
     {  nom.setCellValueFactory(new PropertyValueFactory<>("nom"));
        prenom.setCellValueFactory(new PropertyValueFactory<>("prenom"));
         adresse.setCellValueFactory(new PropertyValueFactory<>("adresse"));
-        idProduit.setCellValueFactory(new PropertyValueFactory<>("Produit"));
+        idProduit.setCellValueFactory(new PropertyValueFactory<>("idP"));
         idUser.setCellValueFactory(new PropertyValueFactory<>("User"));
         
        Serviceconfcommande1 sp= new Serviceconfcommande1();
         try {
-            listconfcommande = sp.afficherconfcommande(); // TODO
+            listconfcommande = sp.afficherconfcommande(); 
            // System.out.println(listconfcommande);
                   affichage.setItems(listconfcommande);
         } catch (SQLException ex) {
@@ -85,7 +89,33 @@ public class AdmincommandeController implements Initializable
     }
 
     @FXML
-    private void confirmercommande(ActionEvent event) {
+    private void confirmercommande(ActionEvent event) throws SQLException {
+        
+      ServiceProduitm sp = new ServiceProduitm();
+      Serviceconfcommande1 c= new Serviceconfcommande1();
+      affichage.setEditable(true);
+      int selectedIndex = affichage.getSelectionModel().getSelectedIndex();
+       confcommande a = affichage.getSelectionModel().getSelectedItem();
+       int u;
+        ServiceProduit us=new ServiceProduit();
+       u=(int) us.RechercherAnnonceById(a.getIdP());
+       if (selectedIndex >= 0) {
+          affichage.getItems().remove(selectedIndex);
+          // System.out.println(x);
+System.out.println(a.getNom());
+         sp.approuverdelate2(u);
+         c.supprimercommande(a.getNom());
+           somme -=u;
+        
+        } else {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Pas de Selection un produit");
+            alert.setHeaderText("vous n'avez pas sélectionner un produit !");
+            alert.setContentText("veuillez sélectionner un produit dans la table");
+            alert.showAndWait();
+
+        }
+    //   int x=p.getId();
     }
 
     @FXML
@@ -96,15 +126,16 @@ public class AdmincommandeController implements Initializable
         int selectedIndex = affichage.getSelectionModel().getSelectedIndex();
 
          confcommande a = affichage.getSelectionModel().getSelectedItem();
+         ServiceProduit spk=new ServiceProduit();
          
-         double z =a.getProduit().getPrix();
+         double z =spk.RechercherAnnonceById(a.getIdP());
     //   int x=p.getId();
 
         if (selectedIndex >= 0) {
            affichage.getItems();
               affichage.getItems().remove(selectedIndex);
             System.out.println(z);
-            sp.approuverdelate(z);     
+            sp.approuverdelate2(z);   
             c.supprimercommande(a.getNom());
          // System.out.println(a);
 //System.out.println(p.getLongitude());

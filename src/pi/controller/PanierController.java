@@ -171,7 +171,7 @@ public class PanierController implements Initializable {
           affichageproduitcommande.getItems().remove(selectedIndex);
           // System.out.println(x);
 System.out.println(p.getPrix());
-         sp.approuverdelate(p.getPrix());
+         sp.approuverdelate2(p.getPrix());
            somme -=p.getPrix();
         
         } else {

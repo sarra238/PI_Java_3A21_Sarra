@@ -8,20 +8,20 @@ package Entities;
 
 public class confcommande {
     private String nom;
-private String prenom;
-private String adresse;
-    private Produit  produit;
-    private User user;
+    private String prenom;
+    private String adresse;
+    private int idP;
+    private int user;
 
-    public confcommande(String nom, String prenom, String adresse, Produit produit, User user) {
+    public confcommande(String nom, String prenom, String adresse, int produit, int user) {
         this.nom = nom;
         this.prenom = prenom;
         this.adresse = adresse;
-        this.produit = produit;
+        this.idP = produit;
         this.user = user;
     }
 
-    public confcommande(String nom, String prenom, String adresse, User user) {
+    public confcommande(String nom, String prenom, String adresse, int user) {
         this.nom = nom;
         this.prenom = prenom;
         this.adresse = adresse;
@@ -32,25 +32,32 @@ private String adresse;
 
     
 
-    public User getUser() {
+    public int getUser() {
         return user;
     }
 
-    public void setUser(User user) {
+    public void setUser(int user) {
         this.user = user;
     }
 
-    public confcommande(String nom, String prenom, String adresse, Produit produit) {
+    /**
+     *
+     * @param nom
+     * @param prenom
+     * @param adresse
+     * @param produit
+     */
+    public confcommande(String nom, String prenom,int produit, String adresse) {
         this.nom = nom;
         this.prenom = prenom;
         this.adresse = adresse;
-        this.produit = produit;
+        this.idP = produit;
     }
 
-    public confcommande(String prenom, String adresse, Produit produit) {
+    public confcommande(String prenom, String adresse, int produit) {
         this.prenom = prenom;
         this.adresse = adresse;
-        this.produit = produit;
+        this.idP= produit;
     }
 
     public confcommande(String nom, String prenom, String adresse) {
@@ -89,17 +96,19 @@ private String adresse;
         this.adresse = adresse;
     }
 
-    public Produit getProduit() {
-        return produit;
+    public int getIdP() {
+        return idP;
     }
 
-    public void setProduit(Produit produit) {
-        this.produit = produit;
+    public void setIdP(int idP) {
+        this.idP = idP;
     }
+
+    
 
     @Override
     public String toString() {
-        return "confcommande{" + "nom=" + nom + ", prenom=" + prenom + ", adresse=" + adresse + ", produit=" + produit + '}';
+        return "confcommande{" + "nom=" + nom + ", prenom=" + prenom + ", adresse=" + adresse + ", produit=" + idP + '}';
     }
 
    

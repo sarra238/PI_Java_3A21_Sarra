@@ -125,7 +125,7 @@ public class PanierController implements Initializable {
           affichageproduitcommande.getItems().remove(selectedIndex);
           // System.out.println(x);
 System.out.println(p.getPrix());
-         sp.approuverdelate(p.getPrix());
+         sp.approuverdelate2(p.getPrix());
            somme -=p.getPrix();
         
         } else {
@@ -149,7 +149,7 @@ System.out.println(p.getPrix());
     private void commander1(ActionEvent event) throws IOException 
     {
         Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        Parent root = FXMLLoader.load(getClass().getResource("/pi/gui/panie.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/pi/gui/panier.fxml"));
         Scene scene = new Scene(root);
         primaryStage.setTitle("roduits!");
         primaryStage.setScene(scene);
