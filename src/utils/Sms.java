@@ -21,7 +21,7 @@ public class Sms {
     public static void sendTrait(String mess) {
         String api="Dd1+GDukWdc-kZjwQbPrZwmfOVkqz5yWYUlk8wmsRh";
         String send="Ahmed Braiki";
-        String num="+21653531190";
+        String num="+21696890800";
         try {      
                         String user = "username=" + "braiki.ahmed.radhi@gmail.com";
 			String apiKey ="&apiKey="+api;

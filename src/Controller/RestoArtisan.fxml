@@ -28,7 +28,6 @@
                         <TableColumn fx:id="adresse" minWidth="0.0" prefWidth="174.0" text="Adresse" />
                         <TableColumn fx:id="cat" prefWidth="229.0" text="Categorie" />
                         <TableColumn fx:id="numtel" prefWidth="100.0" style="white-space: normal;" text="Numero Telephone" />
-                        <TableColumn fx:id="val" prefWidth="35.0" text="Validité" />
                      </columns>
                      <columnResizePolicy>
                         <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
@@ -38,7 +37,6 @@
                   <Button fx:id="ajoutBtn" layoutX="106.0" layoutY="371.0" mnemonicParsing="false" onAction="#Ajouter" style="-fx-background-color: #03224C;" text="Ajouter Restaurant" textFill="WHITE" />
                   <Button fx:id="modifBtn" layoutX="257.0" layoutY="371.0" mnemonicParsing="false" onAction="#Modifier" style="-fx-background-color: #03224C;" text="Modifier Restaurant" textFill="WHITE" />
                   <Button fx:id="suppBtn" layoutX="408.0" layoutY="371.0" mnemonicParsing="false" onAction="#Supprimer" style="-fx-background-color: #03224C;" text="Supprimer Restaurant" textFill="WHITE" />
-                  <Button fx:id="modifEBtn" layoutX="559.0" layoutY="372.0" mnemonicParsing="false" onAction="#ModifierEtat" style="-fx-background-color: #03224C;" text="Modifier Etat" textFill="WHITE" />
                </children>
             </AnchorPane>
          </children>

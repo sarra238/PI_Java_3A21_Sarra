@@ -124,14 +124,6 @@ public class PanierController implements Initializable {
 
     
     }
-        // TODO
-        
- 
- 
-
-
-   
-
     @FXML
     private void vider_panier(ActionEvent event) {
     }
@@ -146,9 +138,6 @@ public class PanierController implements Initializable {
     appStage.setScene(homePageScene);
     appStage.show();
     }
-  
-
-
     @FXML
     private void prixtotale(ActionEvent event) {
     }

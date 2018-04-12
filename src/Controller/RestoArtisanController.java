@@ -62,8 +62,6 @@ public class RestoArtisanController implements Initializable {
     @FXML
     private TableColumn<Restaurant, Integer> numtel;
     @FXML
-    private TableColumn<Restaurant, String> val;
-    @FXML
     private TextField seach;
     @FXML
     private Button ajoutBtn;
@@ -71,8 +69,6 @@ public class RestoArtisanController implements Initializable {
     private Button modifBtn;
     @FXML
     private Button suppBtn;
-    @FXML
-    private Button modifEBtn;
 
     /**
      * Initializes the controller class.
@@ -82,14 +78,13 @@ public class RestoArtisanController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         RestaurantService Ann=new RestaurantService();
-        ArrayList A= (ArrayList) Ann.AfficherRestaurant();
+        ArrayList A= (ArrayList) Ann.AfficherRestaurant2();
         ObservableList ob=FXCollections.observableArrayList(A);
         listAnnonce.setItems(ob);
         nomR.setCellValueFactory(new PropertyValueFactory<>("nom"));
         cat.setCellValueFactory(new PropertyValueFactory<>("categorie"));
         adresse.setCellValueFactory(new PropertyValueFactory<>("adresse"));
         numtel.setCellValueFactory(new PropertyValueFactory<>("numtel"));
-        val.setCellValueFactory(new PropertyValueFactory<>("valide"));
         listAnnonce.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
         
         FilteredList<Restaurant> fil= new FilteredList<>(ob,e->true);
@@ -224,25 +219,6 @@ public class RestoArtisanController implements Initializable {
         if(r!=null){
             r.stream().forEach((A) -> {
                 rs.SupprimerRestaurant(A.getId());
-            });
-        }
-        Stage primary = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        Parent root2 = FXMLLoader.load(getClass().getResource("RestoArtisan.fxml"));
-        Scene scene2 = new Scene(root2); 
-        primary.setTitle("Restaurants!");
-        primary.setScene(scene2);
-        primary.show();
-    }
-
-    @FXML
-    private void ModifierEtat(ActionEvent event) throws IOException {
-        ObservableList<Restaurant> r,fo;
-        RestaurantService rs=new RestaurantService();
-        fo=listAnnonce.getItems();
-        r=listAnnonce.getSelectionModel().getSelectedItems();
-        if(r!=null){
-            r.stream().forEach((A) -> {
-                rs.ModifierEtatRestaurant(A);
             });
         }
         Stage primary = (Stage) ((Node) event.getSource()).getScene().getWindow();

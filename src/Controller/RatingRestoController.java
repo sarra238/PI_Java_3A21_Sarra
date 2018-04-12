@@ -13,7 +13,9 @@ import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
+import javafx.stage.Stage;
 import org.controlsfx.control.Rating;
 import services.RestaurantService;
 
@@ -46,6 +48,8 @@ public class RatingRestoController implements Initializable {
     private void ajouterRate(ActionEvent event) {
         RestaurantService rs=new RestaurantService();
         rs.AjouterRating(ddd, note);
+        Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        primaryStage.close();
         
     }
     

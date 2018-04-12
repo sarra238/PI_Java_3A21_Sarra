@@ -17,6 +17,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import services.RestaurantService;
+import utils.VoiceUtils;
 
 /**
  * FXML Controller class
@@ -55,6 +56,7 @@ public class AjoutRestoController implements Initializable {
 
     @FXML
     private void AjoutProduit(ActionEvent event) {
+        VoiceUtils v= new VoiceUtils("kevin16");
         RestaurantService sp=new RestaurantService();
         Restaurant p=new Restaurant();
         p.setNom(nomP.getText());
@@ -64,6 +66,8 @@ public class AjoutRestoController implements Initializable {
         p.setLatitude((float) Double.parseDouble(alti.getText()));
         p.setLongitude((float) Double.parseDouble(longi.getText()));
         sp.AjouterRestaurant(p);
+        String[] s={"Ajout de restaurant réussi!"};
+        v.sayMultiple(s);
         Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         primaryStage.close();
     }

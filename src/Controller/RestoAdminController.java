@@ -65,6 +65,8 @@ public class RestoAdminController implements Initializable {
     private TableColumn<Restaurant, String> val;
     @FXML
     private TextField seach;
+    @FXML
+    private Button modifEBtn;
 
     /**
      * Initializes the controller class.
@@ -160,6 +162,25 @@ public class RestoAdminController implements Initializable {
         primaryStage.setTitle("Service Aprés Vente!");
         primaryStage.setScene(scene);
         primaryStage.show(); 
+    }
+
+    @FXML
+    private void ModifierEtat(ActionEvent event) throws IOException {
+        ObservableList<Restaurant> r,fo;
+        RestaurantService rs=new RestaurantService();
+        fo=listAnnonce.getItems();
+        r=listAnnonce.getSelectionModel().getSelectedItems();
+        if(r!=null){
+            r.stream().forEach((A) -> {
+                rs.ModifierEtatRestaurant(A);
+            });
+        }
+        Stage primary = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Parent root2 = FXMLLoader.load(getClass().getResource("RestoAdmin.fxml"));
+        Scene scene2 = new Scene(root2); 
+        primary.setTitle("Restaurants!");
+        primary.setScene(scene2);
+        primary.show();
     }
     
 }

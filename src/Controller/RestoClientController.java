@@ -101,10 +101,7 @@ public class RestoClientController implements Initializable {
                 fil.setPredicate((Predicate <? super Restaurant>) Annonce->{
                     if(newValue==null||newValue.isEmpty()){return true;}
                     String lower=newValue.toLowerCase();
-                    if(Annonce.getNom().toLowerCase().contains(lower)){return true;}
-                    else if(Annonce.getCategorie().toLowerCase().contains(lower)){return true;}
-                     else if(Annonce.getAdresse().toLowerCase().contains(lower)){return true;}
-                    return false;
+                    return Annonce.getNom().toLowerCase().contains(lower);
                 });
             });
             SortedList<Restaurant> k = new SortedList<>(fil);

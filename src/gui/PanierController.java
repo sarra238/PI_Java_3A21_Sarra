@@ -32,6 +32,10 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import Entities.Produit;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
+import static javafx.scene.media.MediaPlayer.Status.PLAYING;
+import javafx.scene.media.MediaView;
 import services.ServiceProduitm;
 import static utils.util.somme;
 
@@ -63,8 +67,6 @@ public class PanierController implements Initializable {
     @FXML
     private Button commander;
     @FXML
-    private Button vider_panier;
-    @FXML
     private Button map;
     @FXML
     private Button rechercher;
@@ -72,16 +74,24 @@ public class PanierController implements Initializable {
     private Label label4;
     @FXML
     private TextField text1;
-    @FXML
     private Label label;
-    @FXML
-    private Button prixtotale;
     @FXML
     private Button Excel;
     @FXML
     private Text titre;
         ObservableList<Produit> listProduitcommande = FXCollections.observableArrayList();
          private JFXListView<Produit> liste;
+    @FXML
+    private Button stopBtn;
+    @FXML
+    private Button playBtn;
+    @FXML
+    private Button pauseBtn;
+    
+    MediaPlayer mediaplayer; 
+    
+    @FXML
+    private MediaView mediaV;
 
     /**
      * Initializes the controller class.
@@ -107,9 +117,13 @@ public class PanierController implements Initializable {
    
                 label.setText(String.valueOf(somme)+"DT");
 
-    
+        String VRul= "file:/C:/Users/Win10/Desktop/video/cc.mp4";
+        Media media = new Media (VRul);
+        mediaplayer = new MediaPlayer(media);
+        mediaV.setMediaPlayer(mediaplayer);  
+        mediaplayer.play(); 
     }
-        // TODO
+        
     
 
     @FXML
@@ -162,9 +176,6 @@ System.out.println(p.getPrix());
         Stage.show();
     }
 
-    @FXML
-    private void vider_panier(ActionEvent event) {
-    }
 
     @FXML
     private void map(ActionEvent event) throws IOException {
@@ -210,9 +221,6 @@ System.out.println(p.getPrix());
         }
     }
 
-    @FXML
-    private void prixtotale(ActionEvent event) {
-    }
 
     @FXML
     private void Excel(ActionEvent event) {
@@ -224,6 +232,33 @@ System.out.println(p.getPrix());
 //        ServiceProduitm mservice= new ServiceProduitm();
 //         Csv csv=new Csv(mservice.afficher());
 //    }
+
+    @FXML
+    private void stop(ActionEvent event) {
+        mediaplayer.stop();    
+    }
+
+    @FXML
+    private void play(ActionEvent event) {
+        MediaPlayer.Status status = mediaplayer.getStatus();
+        if (status == MediaPlayer.Status.UNKNOWN || status == MediaPlayer.Status.HALTED) {
+            return;
+        }
+        if (status == MediaPlayer.Status.PAUSED || status == MediaPlayer.Status.STOPPED || status == MediaPlayer.Status.READY) {
+            mediaplayer.play();
+        }
+    }
+
+    @FXML
+    private void pause(ActionEvent event) {
+        if (mediaplayer.getStatus()==PLAYING)
+        {
+             mediaplayer.pause();
+        }
+        else {
+             mediaplayer.play(); 
+        } 
+    }
     
     
 }
