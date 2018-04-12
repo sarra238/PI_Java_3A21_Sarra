@@ -29,6 +29,7 @@
                </children>
             </AnchorPane>
             <Label fx:id="adressText" layoutX="260.0" layoutY="249.0" text="Adresse :" visible="false" />
+            <Button fx:id="NoterBtn" layoutX="369.0" layoutY="440.0" mnemonicParsing="false" onAction="#Noter" style="-fx-background-color: #03224C;" text="Noter Restaurant" textFill="WHITE" />
          </children>
       </AnchorPane>
       <AnchorPane layoutX="-6.0" layoutY="6.0" prefHeight="46.0" prefWidth="606.0" style="-fx-background-color: #03224C;">

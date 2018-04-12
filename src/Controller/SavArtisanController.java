@@ -5,6 +5,7 @@
  */
 package Controller;
 
+import Entities.Reclamation;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -46,13 +47,13 @@ public class SavArtisanController implements Initializable {
     @FXML
     private Button StatBtn;
     @FXML
-    private TableView<?> Savtab;
+    private TableView<Reclamation> Savtab;
     @FXML
-    private TableColumn<?, ?> exp;
+    private TableColumn<Reclamation, String> exp;
     @FXML
-    private TableColumn<?, ?> sujet;
+    private TableColumn<Reclamation, String> sujet;
     @FXML
-    private TableColumn<?, ?> msg;
+    private TableColumn<Reclamation, String> msg;
 
     /**
      * Initializes the controller class.

@@ -214,17 +214,15 @@ public class RestaurantService
             System.out.println("Problème de Modification");
         }
     }
-    public void AjouterRating(int r)
+    public void AjouterRating(Restaurant i,int r)
     {
       
         //String query="update rating set rating="+r+" where id ="+id;
-        String query="INSERT INTO rating (rating) VALUES ("+r+")";
+        String query="INSERT INTO rating (rating,id_Resto) VALUES ('"+i.getId()+"',"+r+")";
         PreparedStatement ps;
         try {
             Statement stl = con.createStatement();
-    
             stl.executeUpdate(query);
-
         } catch (SQLException ex) {
             Logger.getLogger(RestaurantService.class.getName()).log(Level.SEVERE, null, ex);
         }

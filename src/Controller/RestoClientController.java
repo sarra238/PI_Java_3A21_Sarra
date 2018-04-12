@@ -40,6 +40,7 @@ import services.RestaurantService;
  * @author Win10
  */
 public class RestoClientController implements Initializable {
+    public static Restaurant ddd;
     @FXML
     private TableView<Restaurant> tabAnn;
     @FXML
@@ -74,6 +75,8 @@ public class RestoClientController implements Initializable {
     private Label telText;
     @FXML
     private Label adressText;
+    @FXML
+    private Button NoterBtn;
 
     /**
      * Initializes the controller class.
@@ -119,6 +122,7 @@ public class RestoClientController implements Initializable {
           telText.setVisible(true);
           numTel.setVisible(true);
           numTel.setText(Integer.toString(newSelection.getNumtel()));
+          ddd=newSelection;
     }});  
     }    
 
@@ -178,6 +182,22 @@ public class RestoClientController implements Initializable {
         Parent root = FXMLLoader.load(getClass().getResource("SavClient.fxml"));
         Scene scene = new Scene(root);
         primaryStage.setTitle("Service Aprés Vente!");
+        primaryStage.setScene(scene);
+        primaryStage.show();
+    }
+
+    @FXML
+    private void Noter(ActionEvent event) throws IOException {
+        Stage primary = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Parent root2 = FXMLLoader.load(getClass().getResource("RestoClient.fxml"));
+        Scene scene2 = new Scene(root2); 
+        primary.setTitle("Restaurants!");
+        primary.setScene(scene2);
+        primary.show();
+        Stage primaryStage=new Stage();
+        Parent root = FXMLLoader.load(getClass().getResource("RatingResto.fxml"));
+        Scene scene = new Scene(root);        
+        primaryStage.setTitle("Noter Restaurant!");
         primaryStage.setScene(scene);
         primaryStage.show();
     }
