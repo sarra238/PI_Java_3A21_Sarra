@@ -8,6 +8,7 @@ package Controller;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.animation.FadeTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -21,6 +22,7 @@ import javafx.scene.media.MediaPlayer;
 import static javafx.scene.media.MediaPlayer.Status.PLAYING;
 import javafx.scene.media.MediaView;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 /**
  * FXML Controller class
@@ -54,7 +56,9 @@ public class VideoIniController implements Initializable {
         //String VRul= "file:/C:/Users/maryem/Desktop/S/video/bb.mp4";
         Media media = new Media (VRul);
         mediaplayer = new MediaPlayer(media);
-        mediaVie.setMediaPlayer(mediaplayer);  
+        mediaVie.setMediaPlayer(mediaplayer); 
+        mediaVie.setOpacity(0);
+        makeFadeIn();
         mediaplayer.play(); 
     }    
 
@@ -94,6 +98,14 @@ public class VideoIniController implements Initializable {
         else {
              mediaplayer.play(); 
         } 
+    }
+     private void makeFadeIn() {
+        FadeTransition f=new FadeTransition();
+        f.setDuration(Duration.millis(1000));
+        f.setNode(mediaVie);
+        f.setFromValue(0);
+        f.setToValue(1);
+        f.play();
     }
     
 }

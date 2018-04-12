@@ -19,7 +19,8 @@ public class PI_Java_3A extends Application {
         try {
             Parent root;
             //root = FXMLLoader.load(getClass().getResource("/Controller/UserLogin.fxml"));
-            root = FXMLLoader.load(getClass().getResource("/Controller/VideoIni.fxml"));
+            //root = FXMLLoader.load(getClass().getResource("/Controller/VideoIni.fxml"));
+            root = FXMLLoader.load(getClass().getResource("/Controller/First.fxml"));
             Scene scene = new Scene(root);
             primaryStage.setTitle("Introduction!");
             primaryStage.setScene(scene);
