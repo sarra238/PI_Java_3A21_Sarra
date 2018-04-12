@@ -5,6 +5,7 @@
  */
 package gui;
 
+import Entities.User;
 import static utils.util.somme;
 import Entities.confcommande;
 import java.net.URL;
@@ -26,6 +27,8 @@ import javafx.scene.text.Text;
 import services.Serviceconfcommande1;
 import services.ServiceProduit;
 import services.ServiceProduitm;
+import services.UserService;
+import utils.SmsInscriConfirmCom;
 
 /**
  * FXML Controller class
@@ -88,18 +91,24 @@ public class AdmincommandeController implements Initializable
       affichage.setEditable(true);
       int selectedIndex = affichage.getSelectionModel().getSelectedIndex();
        confcommande a = affichage.getSelectionModel().getSelectedItem();
-       Double u;
         ServiceProduit us=new ServiceProduit();
-       u= us.RechercherAnnonceById(a.getIdP());
+      Double u= us.RechercherAnnonceById(a.getIdP());
+
+        UserService us2= new UserService();
+        User u2;
+        u2=us2.RechercherUsertById(a.getUser());       
        if (selectedIndex >= 0) {
           affichage.getItems().remove(selectedIndex);
           // System.out.println(x);
-System.out.println(a.getNom());
+         System.out.println(a.getNom());
          sp.approuverdelate2(u);
          c.supprimercommande(a.getNom());
            somme -=u;
+           SmsInscriConfirmCom sms=new SmsInscriConfirmCom();
+           sms.sendSms(u2.getPhoneNumber());
         
-        } else {
+        } 
+       else {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Pas de Selection un produit");
             alert.setHeaderText("vous n'avez pas sélectionner un produit !");
