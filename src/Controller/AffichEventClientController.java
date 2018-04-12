@@ -5,7 +5,6 @@
  */
 package Controller;
 
-import Entities.Annonce;
 import Entities.Evenement;
 import java.io.File;
 import java.io.IOException;
@@ -105,15 +104,24 @@ public class AffichEventClientController implements Initializable {
         tabEvent.setItems(ob);
         NomEvent.setCellValueFactory(new PropertyValueFactory<>("nomEvenement"));
         tabEvent.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
-        
-        FilteredList<Evenement> fil= new FilteredList<>(ob,e->true);
+      
+                  ArrayList B= (ArrayList) Ann.AfficherAllEvenement();
+          ObservableList ob2=FXCollections.observableArrayList(B);
+        FilteredList<Evenement> fil= new FilteredList<>(ob2,e->true);
+         
         seach.setOnKeyReleased((KeyEvent e) -> {
+           
+             tabEvent.setItems(ob2);
+
             seach.textProperty().addListener((ObservableValue<? extends String> observableValue, String oldValue, String newValue) -> {
                 fil.setPredicate((Predicate <? super Evenement>) Evenement->{
-                    if(newValue==null||newValue.isEmpty()){return true;}
+                    if(newValue==null||newValue.isEmpty()){return true;
+        
+                    }
                     String lower=newValue.toLowerCase();
                     return Evenement.getNomEvenement().toLowerCase().contains(lower);
                 });
+            
             });
             SortedList<Evenement> k = new SortedList<>(fil);
             k.comparatorProperty().bind(tabEvent.comparatorProperty());
@@ -121,7 +129,7 @@ public class AffichEventClientController implements Initializable {
         });
         tabEvent.getSelectionModel().selectedItemProperty().addListener((ObservableValue<? extends Evenement> obs, Evenement oldSelection, Evenement newSelection) -> {
     if (newSelection != null) {
-       ObservableList<Annonce> anno;
+    
        File f;
           f=new File("C:\\wamp64\\www\\SoukI\\web\\images2\\"+newSelection.getNomImg());
           Image img=new Image(f.toURI().toString());
@@ -158,7 +166,10 @@ public class AffichEventClientController implements Initializable {
         );
         pie.setData(pieE);
     }}); 
-        
+    if(seach.getText().length()<=0)    {
+           
+                            tabEvent.setItems(ob);
+    }
     } 
     @FXML
     private void Détail(ActionEvent event) throws IOException {
@@ -234,7 +245,7 @@ public class AffichEventClientController implements Initializable {
         primaryStage.show();
     }
 
-    @FXML
+     @FXML
     private void Resto(ActionEvent event) throws IOException {
         Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Parent root = FXMLLoader.load(getClass().getResource("RestoClient.fxml"));

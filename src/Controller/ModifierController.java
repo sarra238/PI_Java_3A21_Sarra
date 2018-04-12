@@ -6,9 +6,15 @@
 package Controller;
 
 import Entities.Evenement;
+import Entities.notifEvent;
+import Entities.particEv;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -22,6 +28,8 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import services.EvenementServices;
+import services.notifEventServices;
+import services.partEvServices;
 
 public class ModifierController implements Initializable {
 
@@ -54,6 +62,7 @@ public class ModifierController implements Initializable {
 
     private Image image;
     private File f;
+    public static Evenement em;
     /**
      * Initializes the controller class.
      * @param url
@@ -86,7 +95,9 @@ Datefin.setText(e.getDateFin().toString());
         }
         f=new File("C:\\wamp64\\www\\SoukI\\web\\images2\\"+e.getNomImg());
         Image img=new Image(f.toURI().toString());
-        imgEvent.setImage(img);}
+        imgEvent.setImage(img);
+        em=e;
+}
 
     @FXML
     private void modifier(ActionEvent event) throws IOException {
@@ -110,6 +121,21 @@ Datefin.setText(e.getDateFin().toString());
         e.setId(Integer.parseInt(id.getText()));
         EvenementServices s = new EvenementServices();
         s.ModifierEvenement(e);
+        
+        notifEvent n =new notifEvent();
+        notifEventServices ns =new notifEventServices();
+        partEvServices p = new  partEvServices();
+        List<particEv> A=p.AfficherAllParIn(em.getId());
+        for (particEv i : A){
+             DateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        Date date = new Date();
+        n.setDate(format.format(date));
+           
+            n.setIdUser(i.getUserId());
+            n.setText( "L'evenement"+em.getId()+"a été modifier");
+        ns.AjouteNotif(n);
+        
+        }
         Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         primaryStage.close();
     } 

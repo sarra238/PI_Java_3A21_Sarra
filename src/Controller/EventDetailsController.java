@@ -242,11 +242,11 @@ alert.showAndWait();
          }
        
         else if (s.Count(d.getId(), conn)!= 0) {
-            part.getSelectedToggle().selectedProperty().addListener( (obs, oldSelection, newSelection) -> {
+            part.getSelectedToggle().selectedProperty().addListener((obs, oldSelection, newSelection) -> {
             try {
-                if( oldSelection!=null) 
+                if( newSelection!=null) 
                 {
-                    if ((newSelection==in.isSelected())==true){
+                    if (in.isSelected()==true){
                    
                         particEv v =  s.RechercherParById(parID.getId(), conn);
                       v.setId(Integer.parseInt(Eid.getText()));
@@ -257,7 +257,7 @@ alert.showAndWait();
                         System.out.println("in");
                       s.ModifierPart(v);
                     }
-                    else if ((newSelection==nint.isSelected())==true){
+               else if (nint.isSelected()==true){
                            nint.setSelected(true);
                  par.setSelected(false);
                  in.setSelected(false);
@@ -270,7 +270,7 @@ alert.showAndWait();
                     }
                    
                 
-                  if ((newSelection==par.isSelected())==true){
+               else if (par.isSelected()==true){
                          nint.setSelected(false);
                  par.setSelected(true);
                  in.setSelected(false);
@@ -326,9 +326,12 @@ alert.showAndWait();
         
         CommentEventServices cs = new CommentEventServices();
         CommentEvent  c = new CommentEvent();
+        User u = new User();
+        UserService us= new UserService();
+        u=us.RechercherUsertById(conn);
         c.setUserId(conn);
         c.setIdEv(d.getId());
-        c.setCommentaire(commentText.getText());
+        c.setCommentaire((u.getUsername()).toUpperCase()+":  "+commentText.getText());
         DateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         Date date2 = new Date();
         c.setDate(format.format(date2));

@@ -188,6 +188,7 @@ public class EvenementServices implements IEvenement{
             }}
             return Ann;
         } 
+        
         catch (SQLException ex) {
              System.out.println("erreur lors de l'affichage de tous les evenements! " + ex.getMessage());
         }

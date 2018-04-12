@@ -11,6 +11,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 import utils.MyConnection;
 
 public class partEvServices implements IpartEv{
@@ -88,6 +91,31 @@ public class partEvServices implements IpartEv{
         }   
         return 0;
     }
+     public int RechercherIN( int idE) {
+        try {
+            PreparedStatement pt;
+            String query = "select id,type,idEvenement  from avis where idEvenement='"+idE+"'";
+            pt=c.prepareStatement(query);
+            ResultSet rs = pt.executeQuery();
+        
+            if (rs.first()) {
+                
+                particEv A=new particEv();
+           
+           
+                A.setId(rs.getInt(1));
+                A.setType(rs.getString(2));
+                
+                 A.setIdEv(rs.getInt(3));
+                 if(  "interessé(e)".equals(A.getType())){
+                return 1;}
+                 else return 0;
+            }
+        } catch (SQLException ex) {
+                System.out.println("erreur lors de la recherche de l'evenement " + ex.getMessage());
+        }   
+        return 0;
+    }
     public int RechercherNN( int idU,int idE) {
         try {
             PreparedStatement pt;
@@ -113,6 +141,38 @@ public class partEvServices implements IpartEv{
         }   
         return 0;
     }
+    
+     public List<particEv> AfficherAllParIn(int idE) {
+        List<particEv> Ann= new ArrayList<>();
+         String query="select id,type,idUser from avis where idEvenement='"+idE+"'";
+        try {
+            Statement st=c.createStatement();
+            ResultSet rs =st.executeQuery(query);
+          
+        
+            while(rs.next()){
+            
+                particEv A=new particEv();
+                  
+                A.setId(rs.getInt(1));
+             A.setType(rs.getString(2));
+             A.setUserId(rs.getInt(3));
+         
+                System.out.println(A.getId());
+           
+               if("interessé(e)".equals(A.getType()))  {
+                Ann.add(A);
+                   System.out.println("pppp");
+               }
+            }
+            return Ann;
+        } 
+        
+        catch (SQLException ex) {
+             System.out.println("erreur ! " + ex.getMessage());
+        }
+        return null;
+    }
      @Override
     public void ModifierPart(particEv a) {
         try {
@@ -133,8 +193,10 @@ public class partEvServices implements IpartEv{
         int i=0;
         try {
             PreparedStatement pt;
-            String query = "select * from avis where type='"+id+"'";
+            String query = "select * from avis where type=?";
+            
             pt=c.prepareStatement(query);
+            pt.setString(1, id);
             ResultSet rs = pt.executeQuery();
             while(rs.next()){
                 i+=1;
@@ -150,8 +212,9 @@ public class partEvServices implements IpartEv{
         int i=0;
         try {
             PreparedStatement pt;
-            String query = "select * from avis where type='"+id+"' and idEvenement='"+j+"'";
+            String query = "select * from avis where type=? and idEvenement='"+j+"'";
             pt=c.prepareStatement(query);
+             pt.setString(1, id);
             ResultSet rs = pt.executeQuery();
             while(rs.next()){
                 i+=1;

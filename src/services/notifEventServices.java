@@ -40,6 +40,28 @@ public class notifEventServices {
            System.out.println("erreur lors de l'ajout du notification pour l'evenement " + ex.getMessage());
         } 
     }
+       
+        public void DiffNotif(notifEvent e) {
+        PreparedStatement st;
+        List<notifEvent> not=new ArrayList<>();
+        
+        
+        String query="insert into notif (text,idUser,date,etat) values(?,?,?,?)";
+        try {
+            st= c.prepareStatement(query);
+           
+            st.setString(1,e.getText());
+            st.setInt(2,e.getIdUser());
+                 st.setString(3,e.getDaten());
+                 st.setInt(4,0);
+            st.executeUpdate();
+            System.out.println("Ajout accompli avec succés");
+        } 
+         catch (SQLException ex) {
+           System.out.println("erreur lors de l'ajout du notification pour l'evenement " + ex.getMessage());
+        } 
+    }
+    
     
     public List<notifEvent> AfficherUserNotif( int idUser ) {
        List<notifEvent> Ann= new ArrayList<>();
