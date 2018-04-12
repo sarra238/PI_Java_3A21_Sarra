@@ -9,6 +9,7 @@ import Entities.User;
 import Interfaces.IUser;
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import utils.MyConnection;
 import org.mindrot.jbcrypt.BCrypt;
@@ -168,7 +169,7 @@ public class UserService implements IUser{
         try {
             List<User> u=new ArrayList<>();
             PreparedStatement ps;
-            String query = "select nom , prenom,adresse from user where roles LIKE '%"+nom+"%'";
+            String query = "select nom , prenom,adresse,roles from user where roles LIKE '%"+nom+"%'";
             ps= c.prepareStatement(query);
             ResultSet rs = ps.executeQuery();
             if(rs.next())
@@ -177,6 +178,8 @@ public class UserService implements IUser{
                 A.setFname(rs.getString(1));
                 A.setLname(rs.getString(2));
                 A.setAddress(rs.getString(3));
+                A.setRole(rs.getString(4));
+                System.out.println(A.getRole());
                 u.add(A);
             }    
             return u;

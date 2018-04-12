@@ -36,6 +36,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.text.Text;
 import services.UserService;
 
 /**
@@ -72,12 +73,16 @@ public class AnnArtisanMapController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         //gmap.addMapInializedListener((MapComponentInitializedListener) this);
         UserService Ann=new UserService();
-        String s="a:1:{i:0;s:12:\"ROLE_ARTISAN\";}";
+        
+        Text t;
+        String s="ROLE_ARTISAN";
+        
+        //a:1:{i:0;s:12:"ROLE_ARTISAN";}
         ArrayList A= (ArrayList) Ann.RechercherUserByRole(s);
         ObservableList ob=FXCollections.observableArrayList(A);
         table.setItems(ob);
-        nomAnnonce.setCellValueFactory(new PropertyValueFactory<>("Fname"));
-        type.setCellValueFactory(new PropertyValueFactory<>("Lname"));
+        nomAnnonce.setCellValueFactory(new PropertyValueFactory<>("Lname"));
+        type.setCellValueFactory(new PropertyValueFactory<>("Fname"));
         table.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
         
         FilteredList<User> fil= new FilteredList<>(ob,e->true);
