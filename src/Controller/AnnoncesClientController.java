@@ -305,14 +305,13 @@ public class AnnoncesClientController implements Initializable {
         rechercheAnnonceServices rAnn=new rechercheAnnonceServices();
         ArrayList A= (ArrayList) rAnn.AfficherAllRAnnonceC();
         int i;
-        i=rAnn.Count();
+        i=rAnn.Count2();
         if(i>0){
         Alert alert = new InputValidation().getAlert("Recherche", "Veuillez verifier la liste des annonces! \n Il y a de nouvelles annonces liées à vos anciens recherches");
         alert.showAndWait();
-          for (Iterator it = A.iterator(); it.hasNext();) {
-            rechercheAnnonce r = (rechercheAnnonce) it.next(); 
-            rAnn.SupprimerAnnonceA(r);
-          }
+       
+            rAnn.SupprimerAnnonceA();
+          
         nbrText.setText(Integer.toString(0));
         nbrText.setVisible(false);
         

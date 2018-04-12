@@ -5,6 +5,7 @@
  */
 package services;
 
+import Entities.Annonce;
 import Entities.rechercheAnnonce;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -63,6 +64,31 @@ public class rechercheAnnonceServices {
         }
         return null;
     }
+    public int Count2() {
+        AnnonceServices a= new AnnonceServices();
+        List<Annonce> l=a.AfficherAllAnnonce();
+        int i = 0;
+        try {
+            for (Annonce b : l){
+            PreparedStatement pt;
+            String query = "select * from recherche where recherche=?";
+            pt=c.prepareStatement(query);
+            pt.setString(1,b.getNomAnnonce());
+            ResultSet rs = pt.executeQuery();
+            while(rs.next()){
+                i+=1;
+            }
+            }
+            System.out.println(i);
+            return i;
+            
+        }
+         catch (SQLException ex) {
+            System.out.println("Erreur " + ex.getMessage());
+        }  
+        return 0;
+    }
+    
      public int Count() {
         int i=0;
         try {
@@ -79,10 +105,10 @@ public class rechercheAnnonceServices {
         }  
         return i;
     }
-     public void SupprimerAnnonceA(rechercheAnnonce a) {
+     public void SupprimerAnnonceA() {
         try {
             PreparedStatement st;
-            String query = "delete from annonce where idUser='"+a.getIdUser()+"'";
+            String query = "delete from recherche where idUser='"+conn+"'";
             st=c.prepareStatement(query);
             st.executeUpdate();
             System.out.println("Suppression effectuée avec succès");
