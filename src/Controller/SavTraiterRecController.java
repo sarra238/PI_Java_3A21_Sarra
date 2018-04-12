@@ -5,34 +5,28 @@
  */
 package Controller;
 
-
-import static Controller.RestoClientController.ddd;
-import Entities.Restaurant;
 import java.net.URL;
 import java.util.ResourceBundle;
-import javafx.beans.value.ObservableValue;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextArea;
 import javafx.stage.Stage;
-import org.controlsfx.control.Rating;
-import services.RestaurantService;
+import utils.Sms;
 
 /**
  * FXML Controller class
  *
  * @author Win10
  */
-public class RatingRestoController implements Initializable {
+public class SavTraiterRecController implements Initializable {
     @FXML
-    private Rating rating;
+    private TextArea msg;
     @FXML
-    private Button ajouterRateBtn;
+    private Button envoyerBtn;
 
-    int note;
     /**
      * Initializes the controller class.
      * @param url
@@ -40,19 +34,14 @@ public class RatingRestoController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        rating.ratingProperty().addListener((ObservableValue<? extends Number> observable, Number oldValue, Number newValue) -> {
-            note=newValue.intValue();
-            System.out.println(""+newValue);
-        });
+       
     }    
 
     @FXML
-    private void ajouterRate(ActionEvent event) {;
-        RestaurantService rs=new RestaurantService();
-        rs.AjouterRating(ddd, note);
+    private void Envoyer(ActionEvent event) {
+        Sms.sendTrait(msg.getText());
         Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         primaryStage.close();
-        
     }
     
 }

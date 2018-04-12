@@ -6,6 +6,8 @@
 package Controller;
 
 import Entities.Reclamation;
+import Entities.Restaurant;
+import java.awt.image.RescaleOp;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -32,6 +34,7 @@ import services.ReclamationService;
  * @author Win10
  */
 public class SavAdminController implements Initializable {
+    public static Reclamation recc;
     @FXML
     private Button Home;
     @FXML
@@ -54,6 +57,8 @@ public class SavAdminController implements Initializable {
     private TableColumn<Reclamation, String> sujet;
     @FXML
     private TableColumn<Reclamation, String> msg;
+    @FXML
+    private Button traiterBtn;
 
     /**
      * Initializes the controller class.
@@ -69,6 +74,10 @@ public class SavAdminController implements Initializable {
         exp.setCellValueFactory(new PropertyValueFactory<>("expediteur"));
         sujet.setCellValueFactory(new PropertyValueFactory<>("sujet"));
         msg.setCellValueFactory(new PropertyValueFactory<>("Message"));
+        Savtab.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
+    if (newSelection != null) {
+         recc=newSelection;
+    }});  
     }    
 
     @FXML
@@ -145,6 +154,27 @@ public class SavAdminController implements Initializable {
         primaryStage.setTitle("Statistique!");
         primaryStage.setScene(scene);
         primaryStage.show();
+    }
+
+    @FXML
+    private void triter(ActionEvent event) throws IOException {
+        ObservableList<Reclamation> r,fo;
+        fo=Savtab.getItems();
+        r=Savtab.getSelectionModel().getSelectedItems();
+        if(r.size()>0){
+        Stage primary = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Parent root2 = FXMLLoader.load(getClass().getResource("SavAdmin.fxml"));
+        Scene scene2 = new Scene(root2); 
+        primary.setTitle("Service Aprés Vente!");
+        primary.setScene(scene2);
+        primary.show();
+        Stage primaryStage=new Stage();
+        Parent root = FXMLLoader.load(getClass().getResource("SavTraiterRec.fxml"));
+        Scene scene = new Scene(root);        
+        primaryStage.setTitle("Statistique!");
+        primaryStage.setScene(scene);
+        primaryStage.show();
+        }
     }
     
 }

@@ -137,7 +137,6 @@ public class SavClientController implements Initializable {
         r.setMessage(msg.getText());
         r.setIdUser(conn);
         rs.AjouterReclamation(r);
-        //Sms.sendTrait(msg.getText());
         Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Parent root = FXMLLoader.load(getClass().getResource("SavClient.fxml"));
         Scene scene = new Scene(root);

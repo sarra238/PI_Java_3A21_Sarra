@@ -122,11 +122,9 @@ public class RestoClientController implements Initializable {
           telText.setVisible(true);
           numTel.setVisible(true);
           numTel.setText(Integer.toString(newSelection.getNumtel()));
-          
+          rating.setVisible(true);
           int j=Ann.AfficherRating(newSelection);
           if(j!=0){
-          rating.setVisible(true);
-          rating.setDisable(true);
           rating.setRating(j);}
           ddd=newSelection;
     }});  
@@ -194,6 +192,10 @@ public class RestoClientController implements Initializable {
 
     @FXML
     private void Noter(ActionEvent event) throws IOException {
+        ObservableList<Restaurant> r,fo;
+        fo=tabAnn.getItems();
+        r=tabAnn.getSelectionModel().getSelectedItems();
+        if(r.size()>0){
         Stage primary = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Parent root2 = FXMLLoader.load(getClass().getResource("RestoClient.fxml"));
         Scene scene2 = new Scene(root2); 
@@ -206,6 +208,7 @@ public class RestoClientController implements Initializable {
         primaryStage.setTitle("Noter Restaurant!");
         primaryStage.setScene(scene);
         primaryStage.show();
-    }
+    }}
+    
     
 }

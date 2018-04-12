@@ -5,8 +5,7 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #03224C;" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.141" fx:controller="Controller.SavAdminController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #03224C;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.SavAdminController">
    <children>
       <AnchorPane layoutX="-6.0" prefHeight="46.0" prefWidth="606.0" style="-fx-background-color: #03224C;">
          <children>
@@ -26,5 +25,6 @@
             <TableColumn fx:id="msg" minWidth="0.0" prefWidth="237.0" text="Message" />
          </columns>
       </TableView>
+      <Button fx:id="traiterBtn" layoutX="88.0" layoutY="372.0" mnemonicParsing="false" onAction="#triter" style="-fx-background-color: #03224C;" text="Traiter Reclamation" textFill="WHITE" />
    </children>
 </AnchorPane>
