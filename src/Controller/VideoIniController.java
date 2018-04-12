@@ -104,7 +104,7 @@ public class VideoIniController implements Initializable {
     }
      private void makeFadeIn() {
         FadeTransition f=new FadeTransition();
-        f.setDuration(Duration.millis(1000));
+        f.setDuration(Duration.millis(1500));
         f.setNode(pane);
         f.setFromValue(0);
         f.setToValue(1);
