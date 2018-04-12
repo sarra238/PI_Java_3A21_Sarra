@@ -6,7 +6,7 @@
 <?import javafx.scene.media.MediaView?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #03224C;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.VideoIniController">
+<AnchorPane id="AnchorPane" fx:id="pane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #03224C;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.VideoIniController">
    <children>
       <MediaView fx:id="mediaVie" fitHeight="350.0" fitWidth="500.0" layoutX="50.0" layoutY="79.0" AnchorPane.rightAnchor="50.0" />
       <Button fx:id="stopBtn" layoutX="32.0" layoutY="390.0" mnemonicParsing="false" onAction="#Stop" prefHeight="25.0" prefWidth="95.0" style="-fx-background-color: #03224C;" text="Stop" textFill="WHITE" />

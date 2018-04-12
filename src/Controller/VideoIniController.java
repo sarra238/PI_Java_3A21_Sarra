@@ -17,6 +17,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import static javafx.scene.media.MediaPlayer.Status.PLAYING;
@@ -43,6 +44,8 @@ public class VideoIniController implements Initializable {
     
     
     MediaPlayer mediaplayer; 
+    @FXML
+    private AnchorPane pane;
     
     /**
      * Initializes the controller class.
@@ -57,7 +60,7 @@ public class VideoIniController implements Initializable {
         Media media = new Media (VRul);
         mediaplayer = new MediaPlayer(media);
         mediaVie.setMediaPlayer(mediaplayer); 
-        mediaVie.setOpacity(0);
+        pane.setOpacity(0);
         makeFadeIn();
         mediaplayer.play(); 
     }    
@@ -102,7 +105,7 @@ public class VideoIniController implements Initializable {
      private void makeFadeIn() {
         FadeTransition f=new FadeTransition();
         f.setDuration(Duration.millis(1000));
-        f.setNode(mediaVie);
+        f.setNode(pane);
         f.setFromValue(0);
         f.setToValue(1);
         f.play();
