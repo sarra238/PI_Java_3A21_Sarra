@@ -38,7 +38,6 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
-import javafx.util.Duration;
 import services.ServiceProduit;
 import services.ServiceProduitm;
 import static utils.util.somme;
@@ -206,7 +205,13 @@ public class ProduitClientController implements Initializable {
     }
 
     @FXML
-    private void Sav(ActionEvent event) {
+    private void Sav(ActionEvent event) throws IOException {
+        Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Parent root = FXMLLoader.load(getClass().getResource("SavClient.fxml"));
+        Scene scene = new Scene(root);
+        primaryStage.setTitle("Service Aprés Vente!");
+        primaryStage.setScene(scene);
+        primaryStage.show();
     }
 
     @FXML

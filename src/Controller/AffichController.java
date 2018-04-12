@@ -294,7 +294,13 @@ public class AffichController implements Initializable {
     }
 
     @FXML
-    private void Sav(ActionEvent event) {
+    private void Sav(ActionEvent event) throws IOException {
+         Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Parent root = FXMLLoader.load(getClass().getResource("SavArtisan.fxml"));
+        Scene scene = new Scene(root);
+        primaryStage.setTitle("Service Aprés Vente!");
+        primaryStage.setScene(scene);
+        primaryStage.show(); 
     }
 public void rappel(int conn){
      DateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -302,7 +308,7 @@ public void rappel(int conn){
      String    datesy=format.format(date);
      ReserEv r = new ReserEv();
      ReserEvServices rs= new ReserEvServices();
-      ArrayList<ReserEv> aR= new ArrayList<>();
+      ArrayList<ReserEv> aR;
      ArrayList<Evenement> av= new ArrayList<>();
   
      EvenementServices  aes = new EvenementServices();

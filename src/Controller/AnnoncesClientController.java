@@ -266,7 +266,13 @@ public class AnnoncesClientController implements Initializable {
     }
 
     @FXML
-    private void Sav(ActionEvent event) {
+    private void Sav(ActionEvent event) throws IOException {
+        Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Parent root = FXMLLoader.load(getClass().getResource("SavClient.fxml"));
+        Scene scene = new Scene(root);
+        primaryStage.setTitle("Service Aprés Vente!");
+        primaryStage.setScene(scene);
+        primaryStage.show();
     }
 
     @FXML
@@ -292,7 +298,7 @@ public class AnnoncesClientController implements Initializable {
     private void rech(ActionEvent event) {
         rechercheAnnonceServices rAnn=new rechercheAnnonceServices();
         ArrayList A= (ArrayList) rAnn.AfficherAllRAnnonceC();
-        int i=0;
+        int i;
         i=rAnn.Count();
         if(i>0){
         Alert alert = new InputValidation().getAlert("Recherche", "Veuillez verifier la liste des annonces! \n Il y a de nouvelles annonces liées à vos anciens recherches");
