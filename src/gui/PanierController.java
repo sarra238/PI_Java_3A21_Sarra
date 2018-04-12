@@ -36,6 +36,7 @@ import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import static javafx.scene.media.MediaPlayer.Status.PLAYING;
 import javafx.scene.media.MediaView;
+import services.Csv;
 import services.ServiceProduitm;
 import static utils.util.somme;
 
@@ -138,7 +139,7 @@ public class PanierController implements Initializable {
         if (selectedIndex >= 0) {
           affichageproduitcommande.getItems().remove(selectedIndex);
           // System.out.println(x);
-System.out.println(p.getPrix());
+       System.out.println(p.getPrix());
          sp.approuverdelate2(p.getPrix());
            somme -=p.getPrix();
         
@@ -155,6 +156,7 @@ System.out.println(p.getPrix());
     @FXML
     private void retour(ActionEvent event) throws IOException 
     {
+        mediaplayer.stop();
     Stage appStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
     appStage.close();
     }
@@ -179,7 +181,8 @@ System.out.println(p.getPrix());
 
     @FXML
     private void map(ActionEvent event) throws IOException {
-    Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+       mediaplayer.stop();
+        Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Parent root = FXMLLoader.load(getClass().getResource("/pi/gui/panie.fxml"));
         Scene scene = new Scene(root);
         primaryStage.setTitle("roduits!");
@@ -222,16 +225,14 @@ System.out.println(p.getPrix());
     }
 
 
-    @FXML
-    private void Excel(ActionEvent event) {
-    }
+   
     
-//     @FXML
-//    private void Excel(ActionEvent event) throws SQLException
-//    {
-//        ServiceProduitm mservice= new ServiceProduitm();
-//         Csv csv=new Csv(mservice.afficher());
-//    }
+     @FXML
+    private void Excel(ActionEvent event) throws SQLException
+    {
+        ServiceProduitm mservice= new ServiceProduitm();
+         Csv csv=new Csv(mservice.afficher());
+    }
 
     @FXML
     private void stop(ActionEvent event) {
