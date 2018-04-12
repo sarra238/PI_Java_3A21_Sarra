@@ -16,7 +16,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
@@ -43,8 +42,7 @@ public class RestaurantService
     public RestaurantService() {
     }
     public void AjouterRestaurant(Restaurant r) {
-        String n = "Non Valide";
-        String sql ="insert into restaurant (nom,adresse,numtel,categorie,validej,latitute,longitude,idUser,validej) values ('"+r.getNom()+"','"+r.getAdresse()+"',"+r.getNumtel()+",'"+r.getCategorie()+"','"+r.getValide()+"',"+r.getLatitude()+","+r.getLongitude()+","+conn+","+n+")";
+        String sql ="insert into restaurant (nom,adresse,numtel,categorie,validej,latitute,longitude,idUser) values ('"+r.getNom()+"','"+r.getAdresse()+"',"+r.getNumtel()+",'"+r.getCategorie()+"','"+r.getValide()+"',"+r.getLatitude()+","+r.getLongitude()+","+conn+")";
         try {
             System.out.println(sql);
             Statement stl = con.createStatement();
@@ -89,13 +87,6 @@ public class RestaurantService
                 e.setAdresse(rest.getString(3));
                 e.setNumtel(rest.getInt(4));
                 e.setCategorie(rest.getString(5));
-                /*if (rest.getInt(6) == 1)
-                    e.setEtat("Valider");
-                else if (rest.getInt(6) == 0)
-                    e.setEtat("Non Valider");
-                else 
-                    e.setEtat("En attente");*/
-                
                 e.setLatitude(rest.getFloat(6));
                 e.setLongitude(rest.getFloat(7));
                 e.setIdUser(rest.getInt(8));
@@ -140,10 +131,10 @@ public class RestaurantService
                 e.setLongitude(rest.getFloat(7));
                 e.setIdUser(rest.getInt(8));
                 e.setValide(rest.getString(9));
-               /* String x=e.getValide();
-                if(x.equals("Non Valide")){*/
+              String x=e.getValide();
+                if("Valide".equals(x)){
             restaurants.add(e);
-                //}
+                }
                 
         }
         return restaurants;
@@ -158,11 +149,11 @@ public class RestaurantService
     
     
     }
-    public void ModifierRestaurant(Restaurant r,int id) {
+    public void ModifierRestaurant(Restaurant r) {
         try {
             String req;
             
-            req = "UPDATE restaurant SET nom=?, adresse=?, numtel=?, categorie=? WHERE id = "+id;
+            req = "UPDATE restaurant SET nom=?, adresse=?, numtel=?, categorie=? WHERE id = '"+r.getId()+"' and idUser='"+conn+"'";
             
             st= con.prepareStatement(req);
             
@@ -182,7 +173,7 @@ public class RestaurantService
             System.out.println("Problème de Modification");
         }
     }
-    public void ModifierEtatRestaurant(Restaurant r,int id) {
+    public void ModifierEtatRestaurant(Restaurant r) {
         try {
             
             //System.out.println("valide = "+r.getEtat());
@@ -190,15 +181,15 @@ public class RestaurantService
             
             String req;
             
-            req = "UPDATE restaurant SET validej=? WHERE id = "+id;
+            req = "UPDATE restaurant SET validej=? WHERE id = '"+r.getId()+"'";
             
             st= con.prepareStatement(req);
             
             String e=r.getValide();
             if (e.equals("Valide"))
-                st.setString(1, "Non Valide");
+            {st.setString(1, "Non Valide");}
             else 
-                st.setString(1, "Valide");
+            {st.setString(1, "Valide");}
             
             
         /*if (r.getValide()==1)

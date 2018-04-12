@@ -65,6 +65,14 @@ public class RestoArtisanController implements Initializable {
     private TableColumn<Restaurant, String> val;
     @FXML
     private TextField seach;
+    @FXML
+    private Button ajoutBtn;
+    @FXML
+    private Button modifBtn;
+    @FXML
+    private Button suppBtn;
+    @FXML
+    private Button modifEBtn;
 
     /**
      * Initializes the controller class.
@@ -161,6 +169,88 @@ public class RestoArtisanController implements Initializable {
         primaryStage.setTitle("Service Aprés Vente!");
         primaryStage.setScene(scene);
         primaryStage.show();
+    }
+
+    @FXML
+    private void Ajouter(ActionEvent event) throws IOException {
+        Stage primary = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Parent root2 = FXMLLoader.load(getClass().getResource("RestoArtisan.fxml"));
+        Scene scene2 = new Scene(root2); 
+        primary.setTitle("Restaurants!");
+        primary.setScene(scene2);
+        primary.show();
+        Stage primaryStage=new Stage();
+        Parent root = FXMLLoader.load(getClass().getResource("AjoutResto.fxml"));
+        Scene scene = new Scene(root);        
+        primaryStage.setTitle("Restaurants!");
+        primaryStage.setScene(scene);
+        primaryStage.show();
+    }
+
+    @FXML
+    private void Modifier(ActionEvent event) throws IOException {
+        ObservableList<Restaurant> r,fo;
+        fo=listAnnonce.getItems();
+        r=listAnnonce.getSelectionModel().getSelectedItems();
+        if(r.size()>0){
+        Stage primary = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Parent root2 = FXMLLoader.load(getClass().getResource("RestoArtisan.fxml"));
+        Scene scene2 = new Scene(root2); 
+        primary.setTitle("Restaurants!");
+        primary.setScene(scene2);
+        primary.show();
+        Stage primaryStage=new Stage();
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("ModifierResto.fxml"));
+        Parent root = loader.load();
+        Scene scene = new Scene(root);
+        r.stream().forEach((A) -> {
+            ModifierRestoController controllerModifA = loader.getController();
+            controllerModifA.DATA(A);
+        });
+        primaryStage.setTitle("Modifier Resto!");
+        primaryStage.setScene(scene);
+        primaryStage.show();
+        
+        }
+    }
+
+    @FXML
+    private void Supprimer(ActionEvent event) throws IOException {
+        ObservableList<Restaurant> r,fo;
+        RestaurantService rs=new RestaurantService();
+        fo=listAnnonce.getItems();
+        r=listAnnonce.getSelectionModel().getSelectedItems();
+        if(r!=null){
+            r.stream().forEach((A) -> {
+                rs.SupprimerRestaurant(A.getId());
+            });
+        }
+        Stage primary = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Parent root2 = FXMLLoader.load(getClass().getResource("RestoArtisan.fxml"));
+        Scene scene2 = new Scene(root2); 
+        primary.setTitle("Restaurants!");
+        primary.setScene(scene2);
+        primary.show();
+    }
+
+    @FXML
+    private void ModifierEtat(ActionEvent event) throws IOException {
+        ObservableList<Restaurant> r,fo;
+        RestaurantService rs=new RestaurantService();
+        fo=listAnnonce.getItems();
+        r=listAnnonce.getSelectionModel().getSelectedItems();
+        if(r!=null){
+            r.stream().forEach((A) -> {
+                rs.ModifierEtatRestaurant(A);
+            });
+        }
+        Stage primary = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Parent root2 = FXMLLoader.load(getClass().getResource("RestoArtisan.fxml"));
+        Scene scene2 = new Scene(root2); 
+        primary.setTitle("Restaurants!");
+        primary.setScene(scene2);
+        primary.show();
     }
     
 }

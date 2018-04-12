@@ -6,8 +6,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.141" fx:controller="Controller.RestoArtisanController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.RestoArtisanController">
    <children>
       <AnchorPane id="AnchorPane" layoutX="1.0" prefHeight="400.0" prefWidth="600.0">
          <children>
@@ -36,6 +35,10 @@
                      </columnResizePolicy>
                   </TableView>
                   <TextField fx:id="seach" layoutX="3.0" layoutY="330.0" prefHeight="25.0" prefWidth="91.0" promptText="Recherche" />
+                  <Button fx:id="ajoutBtn" layoutX="106.0" layoutY="371.0" mnemonicParsing="false" onAction="#Ajouter" style="-fx-background-color: #03224C;" text="Ajouter Restaurant" textFill="WHITE" />
+                  <Button fx:id="modifBtn" layoutX="257.0" layoutY="371.0" mnemonicParsing="false" onAction="#Modifier" style="-fx-background-color: #03224C;" text="Modifier Restaurant" textFill="WHITE" />
+                  <Button fx:id="suppBtn" layoutX="408.0" layoutY="371.0" mnemonicParsing="false" onAction="#Supprimer" style="-fx-background-color: #03224C;" text="Supprimer Restaurant" textFill="WHITE" />
+                  <Button fx:id="modifEBtn" layoutX="559.0" layoutY="372.0" mnemonicParsing="false" onAction="#ModifierEtat" style="-fx-background-color: #03224C;" text="Modifier Etat" textFill="WHITE" />
                </children>
             </AnchorPane>
          </children>

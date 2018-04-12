@@ -149,5 +149,7 @@ private static ObservableList<Restaurant> Panier = FXCollections.observableArray
         this.etat = etat;
     }*/
 
+   
+
     
 }
