@@ -5,11 +5,11 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.HomeCController">
+<AnchorPane id="AnchorPane" prefHeight="581.0" prefWidth="629.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.HomeCController">
    <children>
-      <AnchorPane id="AnchorPane" layoutX="-6.0" prefHeight="410.0" prefWidth="622.0" style="-fx-background-color: #03224C;">
+      <AnchorPane id="AnchorPane" layoutY="1.0" prefHeight="581.0" prefWidth="629.0" style="-fx-background-color: #03224C;">
          <children>
-            <AnchorPane layoutY="-1.0" prefHeight="46.0" prefWidth="606.0" style="-fx-background-color: #03224C;">
+            <AnchorPane layoutX="13.0" layoutY="-1.0" prefHeight="46.0" prefWidth="606.0" style="-fx-background-color: #03224C;">
                <children>
                   <Button fx:id="Home" layoutX="39.0" layoutY="11.0" mnemonicParsing="false" onAction="#Home" style="-fx-background-color: #03224C;" text="Home" textFill="WHITE" />
                   <Button fx:id="Produits" layoutX="114.0" layoutY="11.0" mnemonicParsing="false" onAction="#Produits" style="-fx-background-color: #03224C;" text="Produits" textFill="WHITE" />
@@ -19,13 +19,13 @@
                   <Button fx:id="SAV" layoutX="509.0" layoutY="11.0" mnemonicParsing="false" onAction="#Sav" style="-fx-background-color: #03224C;" text="SAV" textFill="WHITE" />
                </children>
             </AnchorPane>
-            <ImageView fitHeight="339.0" fitWidth="539.0" layoutX="46.0" layoutY="45.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="26.0">
+            <ImageView fitHeight="391.0" fitWidth="574.0" layoutX="28.0" layoutY="97.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="116.28125">
                <image>
                   <Image url="@../Images/Marrakech_Souk.jpg" />
                </image>
             </ImageView>
          </children>
       </AnchorPane>
-      <Button fx:id="Deconnexion" layoutX="489.0" layoutY="382.0" mnemonicParsing="false" onAction="#Deconnexion" style="-fx-background-color: #03224C;" text="Déconnexion" textFill="WHITE" />
+      <Button fx:id="Deconnexion" layoutX="507.0" layoutY="552.0" mnemonicParsing="false" onAction="#Deconnexion" style="-fx-background-color: #03224C;" text="Déconnexion" textFill="WHITE" />
    </children>
 </AnchorPane>

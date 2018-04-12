@@ -18,7 +18,7 @@
          <children>
             <ImageView fitHeight="265.0" fitWidth="120.0" layoutX="422.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@panier.jpg" />
+                  <Image url="@../../Images/panier.jpg" />
                </image>
             </ImageView>
             <Button fx:id="supprimer" layoutX="21.0" layoutY="324.0" mnemonicParsing="false" onAction="#supprimerproduit_commande" prefHeight="25.0" prefWidth="172.0" style="-fx-background-color: #03324C;" text="supprimer" textFill="WHITE" />
@@ -49,12 +49,10 @@
             <Font name="Bodoni MT" size="18.0" />
          </font>
       </Button>
-      <Text layoutX="10.0" layoutY="10.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
       <Text fx:id="titre" fill="#d10f0f" layoutX="86.0" layoutY="68.0" strokeType="OUTSIDE" strokeWidth="0.0" text="votre panier" wrappingWidth="299.884765625">
          <font>
             <Font name="Arial Black" size="40.0" />
          </font>
       </Text>
-      <Label text="Label" />
    </children>
 </AnchorPane>

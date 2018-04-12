@@ -7,7 +7,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #03224C;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ProduitArtisanController">
+<AnchorPane id="AnchorPane" prefHeight="581.0" prefWidth="629.0" style="-fx-background-color: #03224C;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ProduitArtisanController">
    <children>
       <AnchorPane layoutX="-4.0" prefHeight="46.0" prefWidth="606.0" style="-fx-background-color: #03224C;">
          <children>
@@ -19,7 +19,7 @@
             <Button fx:id="SAV" layoutX="509.0" layoutY="11.0" mnemonicParsing="false" onAction="#Sav" style="-fx-background-color: #03224C;" text="SAV" textFill="WHITE" />
          </children>
       </AnchorPane>
-      <TableView fx:id="listAnnonce" layoutX="108.0" layoutY="63.0" prefHeight="299.0" prefWidth="586.0">
+      <TableView fx:id="listAnnonce" layoutX="28.0" layoutY="63.0" prefHeight="299.0" prefWidth="586.0">
          <columns>
             <TableColumn fx:id="nomP" prefWidth="117.0" text="Nom Produit" />
             <TableColumn fx:id="Region" minWidth="0.0" prefWidth="174.0" text="Region" />
@@ -32,12 +32,12 @@
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
          </columnResizePolicy>
       </TableView>
-      <Button fx:id="Ajout" layoutX="9.0" layoutY="370.0" mnemonicParsing="false" onAction="#AjouterAnn" style="-fx-background-color: #03224C;" text="Ajouter Produit" textFill="WHITE" />
-      <Button fx:id="suppBtn" layoutX="112.0" layoutY="370.0" mnemonicParsing="false" onAction="#delete" style="-fx-background-color: #03224C;" text="Supprimer Produit" textFill="WHITE" />
-      <Button fx:id="ModifBtn" layoutX="229.0" layoutY="370.0" mnemonicParsing="false" onAction="#Modif" style="-fx-background-color: #03224C;" text="Modifier Produit" textFill="WHITE" />
-      <TextField fx:id="seach" layoutX="3.0" layoutY="330.0" prefHeight="25.0" prefWidth="91.0" promptText="Recherche" />
-      <ImageView fx:id="imagev" fitHeight="170.0" fitWidth="106.0" layoutX="-1.0" layoutY="69.0" pickOnBounds="true" preserveRatio="true" />
-      <Button fx:id="StatBtn" layoutX="394.0" layoutY="370.0" mnemonicParsing="false" onAction="#Stat" style="-fx-background-color: #03224C;" text="Statistique" textFill="WHITE" />
-      <Button fx:id="CmdConfBtn" layoutX="517.0" layoutY="370.0" mnemonicParsing="false" onAction="#CmdConf" style="-fx-background-color: #03224C;" text="Commandes à Confirmer" textFill="WHITE" />
+      <Button fx:id="Ajout" layoutX="14.0" layoutY="433.0" mnemonicParsing="false" onAction="#AjouterAnn" style="-fx-background-color: #03224C;" text="Ajouter Produit" textFill="WHITE" />
+      <Button fx:id="suppBtn" layoutX="14.0" layoutY="458.0" mnemonicParsing="false" onAction="#delete" style="-fx-background-color: #03224C;" text="Supprimer Produit" textFill="WHITE" />
+      <Button fx:id="ModifBtn" layoutX="16.0" layoutY="483.0" mnemonicParsing="false" onAction="#Modif" style="-fx-background-color: #03224C;" text="Modifier Produit" textFill="WHITE" />
+      <TextField fx:id="seach" layoutX="208.0" layoutY="458.0" prefHeight="25.0" prefWidth="91.0" promptText="Recherche" />
+      <ImageView fx:id="imagev" fitHeight="170.0" fitWidth="182.0" layoutX="401.0" layoutY="373.0" pickOnBounds="true" preserveRatio="true" />
+      <Button fx:id="StatBtn" layoutX="16.0" layoutY="508.0" mnemonicParsing="false" onAction="#Stat" style="-fx-background-color: #03224C;" text="Statistique" textFill="WHITE" />
+      <Button fx:id="CmdConfBtn" layoutX="20.0" layoutY="533.0" mnemonicParsing="false" onAction="#CmdConf" style="-fx-background-color: #03224C;" text="Commandes à Confirmer" textFill="WHITE" />
    </children>
 </AnchorPane>

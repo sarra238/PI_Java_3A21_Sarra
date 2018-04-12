@@ -5,7 +5,7 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #03224C;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.SavAdminController">
+<AnchorPane id="AnchorPane" prefHeight="581.0" prefWidth="629.0" style="-fx-background-color: #03224C;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.SavAdminController">
    <children>
       <AnchorPane layoutX="-6.0" prefHeight="46.0" prefWidth="606.0" style="-fx-background-color: #03224C;">
          <children>
@@ -17,14 +17,14 @@
             <Button fx:id="SAV" layoutX="509.0" layoutY="11.0" mnemonicParsing="false" onAction="#Sav" style="-fx-background-color: #03224C;" text="SAV" textFill="WHITE" />
          </children>
       </AnchorPane>
-      <Button fx:id="StatBtn" layoutX="351.0" layoutY="373.0" mnemonicParsing="false" onAction="#Stat" style="-fx-background-color: #03224C;" text="Statistique" textFill="WHITE" />
-      <TableView fx:id="Savtab" layoutX="45.0" layoutY="53.0" prefHeight="311.0" prefWidth="509.0">
+      <Button fx:id="StatBtn" layoutX="351.0" layoutY="542.0" mnemonicParsing="false" onAction="#Stat" style="-fx-background-color: #03224C;" text="Statistique" textFill="WHITE" />
+      <TableView fx:id="Savtab" layoutX="45.0" layoutY="53.0" prefHeight="468.0" prefWidth="559.0">
          <columns>
             <TableColumn fx:id="exp" prefWidth="150.0" text="Expéditeur" />
-            <TableColumn fx:id="sujet" minWidth="0.0" prefWidth="121.0" text="Sujet" />
-            <TableColumn fx:id="msg" minWidth="0.0" prefWidth="237.0" text="Message" />
+            <TableColumn fx:id="sujet" minWidth="0.0" prefWidth="135.0" text="Sujet" />
+            <TableColumn fx:id="msg" minWidth="0.0" prefWidth="273.0" text="Message" />
          </columns>
       </TableView>
-      <Button fx:id="traiterBtn" layoutX="88.0" layoutY="372.0" mnemonicParsing="false" onAction="#triter" style="-fx-background-color: #03224C;" text="Traiter Reclamation" textFill="WHITE" />
+      <Button fx:id="traiterBtn" layoutX="88.0" layoutY="541.0" mnemonicParsing="false" onAction="#triter" style="-fx-background-color: #03224C;" text="Traiter Reclamation" textFill="WHITE" />
    </children>
 </AnchorPane>

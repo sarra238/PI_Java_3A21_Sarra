@@ -7,11 +7,11 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" prefHeight="399.0" prefWidth="698.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.AnnoncesAdminController">
+<AnchorPane id="AnchorPane" prefHeight="581.0" prefWidth="629.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.AnnoncesAdminController">
    <children>
-      <AnchorPane id="AnchorPane" layoutX="-1.0" layoutY="46.0" prefHeight="359.0" prefWidth="686.0" style="-fx-background-color: #03224C;">
+      <AnchorPane id="AnchorPane" layoutY="46.0" prefHeight="536.0" prefWidth="636.0" style="-fx-background-color: #03224C;">
          <children>
-            <TableView fx:id="listAnnonce" layoutX="102.0" layoutY="-3.0" prefHeight="332.0" prefWidth="594.0">
+            <TableView fx:id="listAnnonce" layoutX="16.0" layoutY="-3.0" prefHeight="332.0" prefWidth="594.0">
                <columns>
                   <TableColumn fx:id="nomAnnonce" prefWidth="105.0" text="Nom Annonce" />
                   <TableColumn fx:id="type" minWidth="0.0" prefWidth="94.0" text="Type Annonce" />
@@ -22,16 +22,16 @@
                   <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                </columnResizePolicy>
             </TableView>
-            <Button fx:id="suppBtn" layoutX="10.0" layoutY="333.0" mnemonicParsing="false" onAction="#delete" style="-fx-background-color: #03224C;" text="Supprimer Annonce" textFill="WHITE" />
-            <Button fx:id="StatBtn" layoutX="443.0" layoutY="333.0" mnemonicParsing="false" onAction="#StatType" style="-fx-background-color: #03224C;" text="StatistiqueAnnonces" textFill="WHITE" />
-            <TextField fx:id="seach" layoutX="7.0" layoutY="273.0" prefHeight="25.0" prefWidth="91.0" promptText="Recherche" />
-            <ImageView fx:id="imagev" fitHeight="170.0" fitWidth="106.0" layoutX="-4.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true" />
-            <Button fx:id="StatAvisBtn" layoutX="276.0" layoutY="332.0" mnemonicParsing="false" onAction="#StatAvis" style="-fx-background-color: #03224C;" text="StatistiqueAvisAnnonces" textFill="WHITE" />
-            <Button fx:id="commentBtn" layoutX="139.0" layoutY="333.0" mnemonicParsing="false" onAction="#Comment" style="-fx-background-color: #03224C;" text="Les Commentaires" textFill="WHITE" />
-            <Button fx:id="confirmBtn" layoutX="579.0" layoutY="333.0" mnemonicParsing="false" onAction="#confirm" style="-fx-background-color: #03224c;" text="Confirmer Annonce" textFill="WHITE" />
+            <Button fx:id="suppBtn" layoutX="10.0" layoutY="356.0" mnemonicParsing="false" onAction="#delete" style="-fx-background-color: #03224C;" text="Supprimer Annonce" textFill="WHITE" />
+            <Button fx:id="StatBtn" layoutX="14.0" layoutY="461.0" mnemonicParsing="false" onAction="#StatType" style="-fx-background-color: #03224C;" text="StatistiqueAnnonces" textFill="WHITE" />
+            <TextField fx:id="seach" layoutX="228.0" layoutY="426.0" prefHeight="25.0" prefWidth="91.0" promptText="Recherche" />
+            <ImageView fx:id="imagev" fitHeight="170.0" fitWidth="195.0" layoutX="367.0" layoutY="341.0" pickOnBounds="true" preserveRatio="true" />
+            <Button fx:id="StatAvisBtn" layoutX="14.0" layoutY="426.0" mnemonicParsing="false" onAction="#StatAvis" style="-fx-background-color: #03224C;" text="StatistiqueAvisAnnonces" textFill="WHITE" />
+            <Button fx:id="commentBtn" layoutX="14.0" layoutY="390.0" mnemonicParsing="false" onAction="#Comment" style="-fx-background-color: #03224C;" text="Les Commentaires" textFill="WHITE" />
+            <Button fx:id="confirmBtn" layoutX="16.0" layoutY="487.0" mnemonicParsing="false" onAction="#confirm" style="-fx-background-color: #03224c;" text="Confirmer Annonce" textFill="WHITE" />
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="-8.0" prefHeight="46.0" prefWidth="706.0" style="-fx-background-color: #03224C;">
+      <AnchorPane layoutX="-8.0" prefHeight="46.0" prefWidth="644.0" style="-fx-background-color: #03224C;">
          <children>
             <Button fx:id="Home" layoutX="39.0" layoutY="11.0" mnemonicParsing="false" onAction="#Home" style="-fx-background-color: #03224C;" text="Home" textFill="WHITE" />
             <Button fx:id="Produits" layoutX="113.0" layoutY="11.0" mnemonicParsing="false" onAction="#Produits" style="-fx-background-color: #03224C;" text="Produits" textFill="WHITE" />

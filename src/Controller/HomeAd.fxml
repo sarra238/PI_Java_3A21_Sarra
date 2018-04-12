@@ -5,9 +5,9 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.HomeAdController">
+<AnchorPane id="AnchorPane" prefHeight="581.0" prefWidth="629.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.HomeAdController">
    <children>
-      <AnchorPane id="AnchorPane" layoutX="-3.0" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #03224C;">
+      <AnchorPane id="AnchorPane" prefHeight="581.0" prefWidth="629.0" style="-fx-background-color: #03224C;">
          <children>
             <AnchorPane layoutY="-1.0" prefHeight="46.0" prefWidth="606.0" style="-fx-background-color: #03224C;">
                <children>
@@ -19,12 +19,12 @@
                   <Button fx:id="SAV" layoutX="509.0" layoutY="11.0" mnemonicParsing="false" onAction="#Sav" style="-fx-background-color: #03224C;" text="SAV" textFill="WHITE" />
                </children>
             </AnchorPane>
-            <ImageView fitHeight="339.0" fitWidth="539.0" layoutX="36.0" layoutY="46.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="374.0" fitWidth="579.0" layoutX="27.0" layoutY="87.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../Images/Marrakech_Souk.jpg" />
                </image>
             </ImageView>
-            <Button fx:id="Deconnexion" layoutX="499.0" layoutY="385.0" mnemonicParsing="false" onAction="#Deconnexion" style="-fx-background-color: #03224C;" text="Déconnexion" textFill="WHITE" />
+            <Button fx:id="Deconnexion" layoutX="514.0" layoutY="545.0" mnemonicParsing="false" onAction="#Deconnexion" style="-fx-background-color: #03224C;" text="Déconnexion" textFill="WHITE" />
          </children>
       </AnchorPane>
    </children>

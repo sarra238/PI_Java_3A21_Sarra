@@ -5,8 +5,7 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #03224C;" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.141" fx:controller="Controller.SavArtisanController">
+<AnchorPane id="AnchorPane" prefHeight="581.0" prefWidth="629.0" style="-fx-background-color: #03224C;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.SavArtisanController">
    <children>
       <AnchorPane layoutX="-4.0" prefHeight="46.0" prefWidth="606.0" style="-fx-background-color: #03224C;">
          <children>
@@ -18,12 +17,12 @@
             <Button fx:id="SAV" layoutX="509.0" layoutY="11.0" mnemonicParsing="false" onAction="#Sav" style="-fx-background-color: #03224C;" text="SAV" textFill="WHITE" />
          </children>
       </AnchorPane>
-      <Button fx:id="StatBtn" layoutX="361.0" layoutY="374.0" mnemonicParsing="false" onAction="#Stat" style="-fx-background-color: #03224C;" text="Statistique" textFill="WHITE" />
-      <TableView fx:id="Savtab" layoutX="55.0" layoutY="54.0" prefHeight="311.0" prefWidth="509.0">
+      <Button fx:id="StatBtn" layoutX="361.0" layoutY="530.0" mnemonicParsing="false" onAction="#Stat" style="-fx-background-color: #03224C;" text="Statistique" textFill="WHITE" />
+      <TableView fx:id="Savtab" layoutX="45.0" layoutY="54.0" prefHeight="468.0" prefWidth="541.0">
          <columns>
             <TableColumn fx:id="exp" prefWidth="150.0" text="Expéditeur" />
-            <TableColumn fx:id="sujet" minWidth="0.0" prefWidth="121.0" text="Sujet" />
-            <TableColumn fx:id="msg" minWidth="0.0" prefWidth="237.0" text="Message" />
+            <TableColumn fx:id="sujet" minWidth="0.0" prefWidth="133.0" text="Sujet" />
+            <TableColumn fx:id="msg" minWidth="0.0" prefWidth="257.0" text="Message" />
          </columns>
       </TableView>
    </children>

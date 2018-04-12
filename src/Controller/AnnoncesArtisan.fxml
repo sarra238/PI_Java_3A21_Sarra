@@ -8,9 +8,9 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" prefHeight="545.0" prefWidth="702.0" style="-fx-background-color: #03224C;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.AnnoncesArtisanController">
+<AnchorPane id="AnchorPane" prefHeight="581.0" prefWidth="624.0" style="-fx-background-color: #03224C;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.AnnoncesArtisanController">
    <children>
-      <TableView fx:id="listAnnonce" layoutX="107.0" layoutY="53.0" prefHeight="170.0" prefWidth="594.0">
+      <TableView fx:id="listAnnonce" layoutX="9.0" layoutY="53.0" prefHeight="170.0" prefWidth="594.0">
          <columns>
             <TableColumn fx:id="nomAnnonce" prefWidth="105.0" text="Nom Annonce" />
             <TableColumn fx:id="type" minWidth="0.0" prefWidth="94.0" text="Type Annonce" />
@@ -21,14 +21,14 @@
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
          </columnResizePolicy>
       </TableView>
-      <Button fx:id="Ajout" layoutY="514.0" mnemonicParsing="false" onAction="#AjouterAnn" style="-fx-background-color: #03224C;" text="Ajouter Annonce" textFill="WHITE" />
-      <Button fx:id="suppBtn" layoutX="103.0" layoutY="514.0" mnemonicParsing="false" onAction="#delete" style="-fx-background-color: #03224C;" text="Supprimer Annonce" textFill="WHITE" />
-      <Button fx:id="StatBtn" layoutX="577.0" layoutY="514.0" mnemonicParsing="false" onAction="#StatType" style="-fx-background-color: #03224C;" text="StatistiqueAnnonces" textFill="WHITE" />
-      <Button fx:id="ModifBtn" layoutX="220.0" layoutY="514.0" mnemonicParsing="false" onAction="#Modif" style="-fx-background-color: #03224C;" text="Modifier Annonce" textFill="WHITE" />
+      <Button fx:id="Ajout" layoutX="1.0" layoutY="388.0" mnemonicParsing="false" onAction="#AjouterAnn" style="-fx-background-color: #03224C;" text="Ajouter Annonce" textFill="WHITE" />
+      <Button fx:id="suppBtn" layoutX="2.0" layoutY="411.0" mnemonicParsing="false" onAction="#delete" style="-fx-background-color: #03224C;" text="Supprimer Annonce" textFill="WHITE" />
+      <Button fx:id="StatBtn" layoutX="6.0" layoutY="507.0" mnemonicParsing="false" onAction="#StatType" style="-fx-background-color: #03224C;" text="StatistiqueAnnonces" textFill="WHITE" />
+      <Button fx:id="ModifBtn" layoutX="3.0" layoutY="436.0" mnemonicParsing="false" onAction="#Modif" style="-fx-background-color: #03224C;" text="Modifier Annonce" textFill="WHITE" />
       <TextField fx:id="seach" layoutX="2.0" layoutY="329.0" prefHeight="25.0" prefWidth="91.0" promptText="Recherche" />
-      <ImageView fx:id="imagev" fitHeight="170.0" fitWidth="106.0" layoutX="1.0" layoutY="59.0" pickOnBounds="true" preserveRatio="true" />
-      <Button fx:id="StatAvisBtn" layoutX="438.0" layoutY="513.0" mnemonicParsing="false" onAction="#StatAvis" style="-fx-background-color: #03224C;" text="StatistiqueAvisAnnonces" textFill="WHITE" />
-      <Button fx:id="commentBtn" layoutX="326.0" layoutY="513.0" mnemonicParsing="false" onAction="#Comment" style="-fx-background-color: #03224C;" text="Les Commentaires" textFill="WHITE" />
+      <ImageView fx:id="imagev" fitHeight="137.0" fitWidth="146.0" layoutX="112.0" layoutY="222.0" pickOnBounds="true" preserveRatio="true" />
+      <Button fx:id="StatAvisBtn" layoutX="4.0" layoutY="484.0" mnemonicParsing="false" onAction="#StatAvis" style="-fx-background-color: #03224C;" text="StatistiqueAvisAnnonces" textFill="WHITE" />
+      <Button fx:id="commentBtn" layoutX="4.0" layoutY="461.0" mnemonicParsing="false" onAction="#Comment" style="-fx-background-color: #03224C;" text="Les Commentaires" textFill="WHITE" />
       <AnchorPane layoutX="44.0" layoutY="1.0" prefHeight="46.0" prefWidth="606.0" style="-fx-background-color: #03224C;">
          <children>
             <Button fx:id="Home" layoutX="39.0" layoutY="11.0" mnemonicParsing="false" onAction="#Home" style="-fx-background-color: #03224C;" text="Home" textFill="WHITE" />
@@ -40,8 +40,8 @@
          </children>
       </AnchorPane>
       <Button fx:id="partageFBBTn" layoutX="10.0" layoutY="361.0" mnemonicParsing="false" onAction="#partageFB" style="-fx-background-color: #03224C;" text="Partager" textFill="WHITE" />
-      <PieChart fx:id="pie" layoutX="123.0" layoutY="363.0" prefHeight="147.0" prefWidth="568.0" stylesheets="@StatCss.css" />
-      <TableView fx:id="tableCom" layoutX="236.0" layoutY="222.0" prefHeight="137.0" prefWidth="341.0" visible="false">
+      <PieChart fx:id="pie" layoutX="143.0" layoutY="363.0" prefHeight="207.0" prefWidth="478.0" stylesheets="@StatCss.css" />
+      <TableView fx:id="tableCom" layoutX="271.0" layoutY="222.0" prefHeight="137.0" prefWidth="341.0" visible="false">
          <columns>
             <TableColumn fx:id="commentaire" editable="false" prefWidth="230.0" sortType="DESCENDING" sortable="false" text="commentaire" />
             <TableColumn fx:id="date" prefWidth="110.0" text="Date" />

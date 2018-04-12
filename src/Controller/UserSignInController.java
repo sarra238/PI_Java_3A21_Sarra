@@ -121,8 +121,8 @@ public class UserSignInController implements Initializable {
                             else {
         UserService Us = new UserService();
         Us.signIn(U);
-       /* SmsInscri sms=new SmsInscri();
-        sms.sendSms(U.getPhoneNumber());*/
+        SmsInscri sms=new SmsInscri();
+        sms.sendSms(U.getPhoneNumber());
         Alert alert = new InputValidation().getAlert("Succes", "Vous êtes inscrit dans l'application souk el medina!");
         alert.showAndWait();
         Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();

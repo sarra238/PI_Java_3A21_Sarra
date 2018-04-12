@@ -18,6 +18,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.Hyperlink;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -34,6 +35,8 @@ public class ForgetPasswordController implements Initializable {
     private PasswordField mdp;
     @FXML
     private Button nvmdp;
+    @FXML
+    private Hyperlink cnxLink;
 
     /**
      * Initializes the controller class.
@@ -80,5 +83,15 @@ public class ForgetPasswordController implements Initializable {
         }
         }
         }
+    }
+
+    @FXML
+    private void connexion(ActionEvent event) throws IOException {
+        Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Parent root = FXMLLoader.load(getClass().getResource("UserLogin.fxml"));
+        Scene scene = new Scene(root);
+        primaryStage.setTitle("Login!");
+        primaryStage.setScene(scene);
+        primaryStage.show(); 
     }
 }

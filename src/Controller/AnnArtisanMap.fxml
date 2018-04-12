@@ -20,7 +20,6 @@
                         <TableColumn fx:id="type" minWidth="0.0" prefWidth="122.0" text="Type Annonce" />
                      </columns>
                      <columnResizePolicy>
-                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                      </columnResizePolicy>
                   </TableView>
                   <AnchorPane fx:id="mapGoogle" layoutX="248.0" layoutY="45.0" prefHeight="219.0" prefWidth="565.0">
