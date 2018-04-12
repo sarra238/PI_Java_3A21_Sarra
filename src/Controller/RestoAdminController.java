@@ -5,13 +5,17 @@
  */
 package Controller;
 
-import Entities.Reclamation;
+import Entities.Restaurant;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+import java.util.function.Predicate;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -20,18 +24,21 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
-import services.ReclamationService;
+import services.RestaurantService;
 
 /**
  * FXML Controller class
  *
  * @author Win10
  */
-public class SavAdminController implements Initializable {
+public class RestoAdminController implements Initializable {
     @FXML
     private Button Home;
     @FXML
@@ -45,15 +52,19 @@ public class SavAdminController implements Initializable {
     @FXML
     private Button SAV;
     @FXML
-    private Button StatBtn;
+    private TableView<Restaurant> listAnnonce;
     @FXML
-    private TableView<Reclamation> Savtab;
+    private TableColumn<Restaurant, String> nomR;
     @FXML
-    private TableColumn<Reclamation, String> exp;
+    private TableColumn<Restaurant, String> adresse;
     @FXML
-    private TableColumn<Reclamation, String> sujet;
+    private TableColumn<Restaurant, String> cat;
     @FXML
-    private TableColumn<Reclamation, String> msg;
+    private TableColumn<Restaurant, Integer> numtel;
+    @FXML
+    private TableColumn<Restaurant, String> val;
+    @FXML
+    private TextField seach;
 
     /**
      * Initializes the controller class.
@@ -62,16 +73,36 @@ public class SavAdminController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        ReclamationService v =  new  ReclamationService();
-        ArrayList arrayList = (ArrayList) v.AfficherReclamation();
-        ObservableList ob = FXCollections.observableArrayList(arrayList);
-        Savtab.setItems(ob);
-        exp.setCellValueFactory(new PropertyValueFactory<>("expediteur"));
-        sujet.setCellValueFactory(new PropertyValueFactory<>("sujet"));
-        msg.setCellValueFactory(new PropertyValueFactory<>("Message"));
+        RestaurantService Ann=new RestaurantService();
+        ArrayList A= (ArrayList) Ann.AfficherRestaurant();
+        ObservableList ob=FXCollections.observableArrayList(A);
+        listAnnonce.setItems(ob);
+        nomR.setCellValueFactory(new PropertyValueFactory<>("nom"));
+        cat.setCellValueFactory(new PropertyValueFactory<>("categorie"));
+        adresse.setCellValueFactory(new PropertyValueFactory<>("adresse"));
+        numtel.setCellValueFactory(new PropertyValueFactory<>("numtel"));
+        val.setCellValueFactory(new PropertyValueFactory<>("valide"));
+        listAnnonce.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
+        
+        FilteredList<Restaurant> fil= new FilteredList<>(ob,e->true);
+        seach.setOnKeyReleased((KeyEvent e) -> {
+            seach.textProperty().addListener((ObservableValue<? extends String> observableValue, String oldValue, String newValue) -> {
+                fil.setPredicate((Predicate <? super Restaurant>) Annonce->{
+                    if(newValue==null||newValue.isEmpty()){return true;}
+                    String lower=newValue.toLowerCase();
+                    if(Annonce.getNom().toLowerCase().contains(lower)){return true;}
+                    else if(Annonce.getCategorie().toLowerCase().contains(lower)){return true;}
+                     else if(Annonce.getAdresse().toLowerCase().contains(lower)){return true;}
+                    return false;
+                });
+            });
+            SortedList<Restaurant> k = new SortedList<>(fil);
+            k.comparatorProperty().bind(listAnnonce.comparatorProperty());
+            listAnnonce.setItems(k);
+        });
     }    
 
-    @FXML
+   @FXML
     private void Home(ActionEvent event) throws IOException {
         Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Parent root = FXMLLoader.load(getClass().getResource("HomeAd.fxml"));
@@ -129,22 +160,6 @@ public class SavAdminController implements Initializable {
         primaryStage.setTitle("Service Aprés Vente!");
         primaryStage.setScene(scene);
         primaryStage.show(); 
-    }
-
-    @FXML
-    private void Stat(ActionEvent event) throws IOException {
-        Stage primary = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        Parent root2 = FXMLLoader.load(getClass().getResource("SavAdmin.fxml"));
-        Scene scene2 = new Scene(root2); 
-        primary.setTitle("Service Aprés Vente!");
-        primary.setScene(scene2);
-        primary.show();
-        Stage primaryStage=new Stage();
-        Parent root = FXMLLoader.load(getClass().getResource("StatSav.fxml"));
-        Scene scene = new Scene(root);        
-        primaryStage.setTitle("Statistique!");
-        primaryStage.setScene(scene);
-        primaryStage.show();
     }
     
 }

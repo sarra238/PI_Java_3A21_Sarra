@@ -5,13 +5,17 @@
  */
 package Controller;
 
-import Entities.Reclamation;
-import Entities.User;
+import Entities.Restaurant;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
+import java.util.function.Predicate;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -20,20 +24,21 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.TextArea;
+import javafx.scene.control.SelectionMode;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
-import services.ReclamationService;
-import services.UserService;
-import static services.UserService.conn;
-import utils.Sms;
+import services.RestaurantService;
 
 /**
  * FXML Controller class
  *
  * @author Win10
  */
-public class SavClientController implements Initializable {
+public class RestoArtisanController implements Initializable {
     @FXML
     private Button Home;
     @FXML
@@ -47,11 +52,19 @@ public class SavClientController implements Initializable {
     @FXML
     private Button SAV;
     @FXML
-    private ComboBox<String> combo;
+    private TableView<Restaurant> listAnnonce;
     @FXML
-    private TextArea msg;
+    private TableColumn<Restaurant, String> nomR;
     @FXML
-    private Button EnvoiBtn;
+    private TableColumn<Restaurant, String> adresse;
+    @FXML
+    private TableColumn<Restaurant, String> cat;
+    @FXML
+    private TableColumn<Restaurant, Integer> numtel;
+    @FXML
+    private TableColumn<Restaurant, String> val;
+    @FXML
+    private TextField seach;
 
     /**
      * Initializes the controller class.
@@ -60,11 +73,37 @@ public class SavClientController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        ObservableList ob = FXCollections.observableArrayList("Produit Périmé","Produit non livrer","Reclamation Restaurant","Evenement debile","Autre ...");
-        combo.setItems(ob);
+        RestaurantService Ann=new RestaurantService();
+        ArrayList A= (ArrayList) Ann.AfficherRestaurant();
+        ObservableList ob=FXCollections.observableArrayList(A);
+        listAnnonce.setItems(ob);
+        nomR.setCellValueFactory(new PropertyValueFactory<>("nom"));
+        cat.setCellValueFactory(new PropertyValueFactory<>("categorie"));
+        adresse.setCellValueFactory(new PropertyValueFactory<>("adresse"));
+        numtel.setCellValueFactory(new PropertyValueFactory<>("numtel"));
+        val.setCellValueFactory(new PropertyValueFactory<>("valide"));
+        listAnnonce.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
+        
+        FilteredList<Restaurant> fil= new FilteredList<>(ob,e->true);
+        seach.setOnKeyReleased((KeyEvent e) -> {
+            seach.textProperty().addListener((ObservableValue<? extends String> observableValue, String oldValue, String newValue) -> {
+                fil.setPredicate((Predicate <? super Restaurant>) Annonce->{
+                    if(newValue==null||newValue.isEmpty()){return true;}
+                    String lower=newValue.toLowerCase();
+                    if(Annonce.getNom().toLowerCase().contains(lower)){return true;}
+                    else if(Annonce.getCategorie().toLowerCase().contains(lower)){return true;}
+                     else if(Annonce.getAdresse().toLowerCase().contains(lower)){return true;}
+                    return false;
+                });
+            });
+            SortedList<Restaurant> k = new SortedList<>(fil);
+            k.comparatorProperty().bind(listAnnonce.comparatorProperty());
+            listAnnonce.setItems(k);
+        });
     }    
 
-    @FXML
+
+     @FXML
     private void Home(ActionEvent event) throws IOException {
         Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Parent root = FXMLLoader.load(getClass().getResource("HomeC.fxml"));
@@ -107,7 +146,7 @@ public class SavClientController implements Initializable {
     @FXML
     private void Resto(ActionEvent event) throws IOException {
         Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        Parent root = FXMLLoader.load(getClass().getResource("RestoClient.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("RestoArtisan.fxml"));
         Scene scene = new Scene(root);
         primaryStage.setTitle("Restaurants!");
         primaryStage.setScene(scene);
@@ -116,28 +155,6 @@ public class SavClientController implements Initializable {
 
     @FXML
     private void Sav(ActionEvent event) throws IOException {
-        Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        Parent root = FXMLLoader.load(getClass().getResource("SavClient.fxml"));
-        Scene scene = new Scene(root);
-        primaryStage.setTitle("Service Aprés Vente!");
-        primaryStage.setScene(scene);
-        primaryStage.show();
-    }
-
-    @FXML
-    private void Envoyer(ActionEvent event) throws IOException {
-        
-        Reclamation r=new Reclamation();
-        User u;
-        UserService us=new UserService();
-        ReclamationService rs=new ReclamationService();
-        u=us.RechercherUsertById(conn);
-        r.setExpediteur(u.getEmail());
-        r.setSujet(combo.getValue());
-        r.setMessage(msg.getText());
-        r.setIdUser(conn);
-        rs.AjouterReclamation(r);
-        //Sms.sendTrait(msg.getText());
         Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Parent root = FXMLLoader.load(getClass().getResource("SavClient.fxml"));
         Scene scene = new Scene(root);

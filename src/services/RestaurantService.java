@@ -12,6 +12,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -19,6 +20,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import static services.UserService.conn;
 import utils.MyConnection;
 import utils.Sms;
 
@@ -41,8 +43,8 @@ public class RestaurantService
     public RestaurantService() {
     }
     public void AjouterRestaurant(Restaurant r) {
-        String n = "Null";
-        String sql ="insert into restaurant (nom,adresse,numtel,categorie,validej,latitute,longitude,idUser) values ('"+r.getNom()+"','"+r.getAdresse()+"',"+r.getNumtel()+",'"+r.getCategorie()+"','"+r.getValide()+"',"+r.getLatitude()+","+r.getLongitude()+","+n+")";
+        String n = "Non Valide";
+        String sql ="insert into restaurant (nom,adresse,numtel,categorie,validej,latitute,longitude,idUser,validej) values ('"+r.getNom()+"','"+r.getAdresse()+"',"+r.getNumtel()+",'"+r.getCategorie()+"','"+r.getValide()+"',"+r.getLatitude()+","+r.getLongitude()+","+conn+","+n+")";
         try {
             System.out.println(sql);
             Statement stl = con.createStatement();
@@ -74,7 +76,7 @@ public class RestaurantService
     }
     
     public List<Restaurant> AfficherRestaurant() {
-        ObservableList<Restaurant> restaurants = FXCollections.observableArrayList();
+        List<Restaurant> restaurants = new ArrayList();
         try
         {
             Statement stm = con.createStatement();
@@ -113,6 +115,49 @@ public class RestaurantService
     
     }
 
+    public List<Restaurant> AfficherRestaurant2() {
+        List<Restaurant> restaurants = new ArrayList();
+        try
+        {
+            Statement stm = con.createStatement();
+            ResultSet rest=stm.executeQuery("select id,nom,adresse,numtel,categorie,latitute,longitude,idUser,validej from restaurant ");
+        while(rest.next())
+        {
+            Restaurant e = new Restaurant();
+                e.setId(rest.getInt(1));
+                e.setNom(rest.getString(2));
+                e.setAdresse(rest.getString(3));
+                e.setNumtel(rest.getInt(4));
+                e.setCategorie(rest.getString(5));
+                /*if (rest.getInt(6) == 1)
+                    e.setEtat("Valider");
+                else if (rest.getInt(6) == 0)
+                    e.setEtat("Non Valider");
+                else 
+                    e.setEtat("En attente");*/
+                
+                e.setLatitude(rest.getFloat(6));
+                e.setLongitude(rest.getFloat(7));
+                e.setIdUser(rest.getInt(8));
+                e.setValide(rest.getString(9));
+               /* String x=e.getValide();
+                if(x.equals("Non Valide")){*/
+            restaurants.add(e);
+                //}
+                
+        }
+        return restaurants;
+        }
+        catch (SQLException ex)
+        {
+            
+            System.out.println(ex.toString());
+            System.out.println("Affichage echouee");
+        }
+        return null;
+    
+    
+    }
     public void ModifierRestaurant(Restaurant r,int id) {
         try {
             String req;

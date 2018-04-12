@@ -245,7 +245,13 @@ public class AffichEventAdController implements Initializable {
     }
 
     @FXML
-    private void Resto(ActionEvent event) {
+    private void Resto(ActionEvent event) throws IOException {
+         Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Parent root = FXMLLoader.load(getClass().getResource("RestoAdmin.fxml"));
+        Scene scene = new Scene(root);
+        primaryStage.setTitle("Restaurants!");
+        primaryStage.setScene(scene);
+        primaryStage.show();
     }
 
     @FXML
