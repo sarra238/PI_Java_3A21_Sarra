@@ -63,7 +63,6 @@ public class AjoutRestoController implements Initializable {
         p.setNumtel(Integer.parseInt(tel.getText()));
         p.setLatitude((float) Double.parseDouble(alti.getText()));
         p.setLongitude((float) Double.parseDouble(longi.getText()));
-        p.setValide("Non Valide");
         sp.AjouterRestaurant(p);
         Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         primaryStage.close();

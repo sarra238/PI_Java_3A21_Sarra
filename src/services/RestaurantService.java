@@ -42,7 +42,7 @@ public class RestaurantService
     public RestaurantService() {
     }
     public void AjouterRestaurant(Restaurant r) {
-        String sql ="insert into restaurant (nom,adresse,numtel,categorie,validej,latitute,longitude,idUser) values ('"+r.getNom()+"','"+r.getAdresse()+"',"+r.getNumtel()+",'"+r.getCategorie()+"','"+r.getValide()+"',"+r.getLatitude()+","+r.getLongitude()+","+conn+")";
+        String sql ="insert into restaurant (nom,adresse,numtel,categorie,latitute,longitude,idUser) values ('"+r.getNom()+"','"+r.getAdresse()+"',"+r.getNumtel()+",'"+r.getCategorie()+"',"+r.getLatitude()+","+r.getLongitude()+","+conn+")";
         try {
             System.out.println(sql);
             Statement stl = con.createStatement();

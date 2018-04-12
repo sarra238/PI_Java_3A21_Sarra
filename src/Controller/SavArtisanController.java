@@ -73,7 +73,7 @@ public class SavArtisanController implements Initializable {
     @FXML
     private void Home(ActionEvent event) throws IOException {
         Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        Parent root = FXMLLoader.load(getClass().getResource("HomeAd.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("Home.fxml"));
         Scene scene = new Scene(root);
         primaryStage.setTitle("Home!");
         primaryStage.setScene(scene);
@@ -82,18 +82,18 @@ public class SavArtisanController implements Initializable {
 
     @FXML
     private void Produits(ActionEvent event) throws IOException {
-      Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-      Parent root = FXMLLoader.load(getClass().getResource("ProduitAdmin.fxml"));
-      Scene scene = new Scene(root);    
-      primaryStage.setTitle("Produits!");
-      primaryStage.setScene(scene);
-      primaryStage.show();
+        Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Parent root = FXMLLoader.load(getClass().getResource("ProduitArtisan.fxml"));
+        Scene scene = new Scene(root);
+        primaryStage.setTitle("Produits!");
+        primaryStage.setScene(scene);
+        primaryStage.show();
     }
 
     @FXML
     private void Annonces(ActionEvent event) throws IOException {
         Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        Parent root = FXMLLoader.load(getClass().getResource("AnnoncesAdmin.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("AnnoncesArtisan.fxml"));
         Scene scene = new Scene(root);
         primaryStage.setTitle("Annonces!");
         primaryStage.setScene(scene);
@@ -103,11 +103,11 @@ public class SavArtisanController implements Initializable {
     @FXML
     private void Event(ActionEvent event) throws IOException {
         Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-      Parent root = FXMLLoader.load(getClass().getResource("AffichEventAd.fxml"));
-      Scene scene = new Scene(root);    
-      primaryStage.setTitle("Evenement");
-      primaryStage.setScene(scene);
-      primaryStage.show();
+        Parent root = FXMLLoader.load(getClass().getResource("affich.fxml"));
+        Scene scene = new Scene(root);
+        primaryStage.setTitle("Evenements!");
+        primaryStage.setScene(scene);
+        primaryStage.show();
     }
 
     @FXML
@@ -122,8 +122,8 @@ public class SavArtisanController implements Initializable {
 
     @FXML
     private void Sav(ActionEvent event) throws IOException {
-         Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        Parent root = FXMLLoader.load(getClass().getResource("SavAdmin.fxml"));
+        Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Parent root = FXMLLoader.load(getClass().getResource("SavArtisan.fxml"));
         Scene scene = new Scene(root);
         primaryStage.setTitle("Service Aprés Vente!");
         primaryStage.setScene(scene);
