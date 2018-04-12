@@ -6,6 +6,7 @@
  */
 package services;
 
+import Entities.Rate;
 import Entities.Restaurant;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -62,7 +63,7 @@ public class RestaurantService
         }
     }
     public void SupprimerRestaurant(int id) {
-        String query="DELETE FROM restaurant WHERE id = " + id + ";";
+        String query="DELETE FROM restaurant WHERE id = '" + id + "' and idUser='"+conn+"'";
     
         try {
             st=con.prepareStatement(query);
@@ -216,16 +217,36 @@ public class RestaurantService
     }
     public void AjouterRating(Restaurant i,int r)
     {
+      PreparedStatement sts;
+        //String query="update rating set rating="+r+" where id ="+id;
+        String query="INSERT INTO rating (rating,id_Resto) VALUES (?,?)";
+        try {
+            sts= con.prepareStatement(query);
+            sts.setInt(1,r);
+            sts.setInt(2,i.getId());
+            sts.executeUpdate();
+        } catch (SQLException ex) {
+            System.out.println("Erreur Ajout Rating Resto");
+        }
+    }
+    public int AfficherRating(Restaurant i)
+    {
       
         //String query="update rating set rating="+r+" where id ="+id;
-        String query="INSERT INTO rating (rating,id_Resto) VALUES ('"+i.getId()+"',"+r+")";
-        PreparedStatement ps;
+        String query="select AVG(rating) from rating where id_Resto='"+i.getId()+"'";
         try {
-            Statement stl = con.createStatement();
-            stl.executeUpdate(query);
+            Statement stm = con.createStatement();
+            ResultSet rest=stm.executeQuery(query);
+        while(rest.next())
+        {
+            Rate e = new Rate();
+            e.setRating(rest.getInt(1));
+            return e.getRating();
+        }
         } catch (SQLException ex) {
             Logger.getLogger(RestaurantService.class.getName()).log(Level.SEVERE, null, ex);
         }
+        return 0;
     }
 }
     

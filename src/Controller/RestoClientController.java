@@ -32,6 +32,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
+import org.controlsfx.control.Rating;
 import services.RestaurantService;
 
 /**
@@ -77,6 +78,8 @@ public class RestoClientController implements Initializable {
     private Label adressText;
     @FXML
     private Button NoterBtn;
+    @FXML
+    private Rating rating;
 
     /**
      * Initializes the controller class.
@@ -122,6 +125,12 @@ public class RestoClientController implements Initializable {
           telText.setVisible(true);
           numTel.setVisible(true);
           numTel.setText(Integer.toString(newSelection.getNumtel()));
+          
+          int j=Ann.AfficherRating(newSelection);
+          if(j!=0){
+          rating.setVisible(true);
+          rating.setDisable(true);
+          rating.setRating(j);}
           ddd=newSelection;
     }});  
     }    
