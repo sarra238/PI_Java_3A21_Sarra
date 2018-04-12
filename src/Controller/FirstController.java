@@ -19,6 +19,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
@@ -42,6 +43,7 @@ public class FirstController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         
+        
     }    
     private void makeFadeout() {
         FadeTransition f=new FadeTransition();
@@ -61,6 +63,8 @@ public class FirstController implements Initializable {
         });
         f.play();
     }
+     
+    
 
     @FXML
     private void fffff(MouseEvent event) {
