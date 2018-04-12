@@ -32,10 +32,10 @@
                     </columns>
                   </TableView>
                   <ImageView fx:id="imageAnn" fitHeight="150.0" fitWidth="200.0" layoutX="234.0" layoutY="56.0" pickOnBounds="true" preserveRatio="true" />
-                  <Label fx:id="desc" layoutX="214.0" layoutY="350.0" prefHeight="79.0" prefWidth="338.0" text="Description" wrapText="true" />
-                  <Label fx:id="nom" layoutX="224.0" layoutY="276.0" prefHeight="18.0" prefWidth="245.0" text="NomAnn" />
-                  <Label fx:id="type" layoutX="217.0" layoutY="311.0" prefHeight="18.0" prefWidth="76.0" text="Type" />
-                  <Label fx:id="prix" layoutX="347.0" layoutY="311.0" text="Prix Reduction" />
+                  <Label fx:id="desc" layoutX="214.0" layoutY="350.0" prefHeight="79.0" prefWidth="338.0" text="Description" visible="false" wrapText="true" />
+                  <Label fx:id="nom" layoutX="224.0" layoutY="276.0" prefHeight="18.0" prefWidth="245.0" text="NomAnn" visible="false" />
+                  <Label fx:id="type" layoutX="217.0" layoutY="311.0" prefHeight="18.0" prefWidth="76.0" text="Type" visible="false" />
+                  <Label fx:id="prix" layoutX="347.0" layoutY="311.0" text="Prix Reduction" visible="false" />
                   <TextField fx:id="seach" layoutX="10.0" layoutY="59.0" promptText="Recherche" />
                   <Label fx:id="nbrText" layoutX="110.0" layoutY="5.0" text="Nbr" visible="false" />
                </children>

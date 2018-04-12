@@ -116,13 +116,15 @@ public class PanierController implements Initializable {
             Logger.getLogger(ServiceProduitm.class.getName()).log(Level.SEVERE, null, ex);
        }
    
-                label.setText(String.valueOf(somme)+"DT");
 
         String VRul= "file:/C:/Users/Win10/Desktop/video/cc.mp4";
         Media media = new Media (VRul);
         mediaplayer = new MediaPlayer(media);
         mediaV.setMediaPlayer(mediaplayer);  
-        mediaplayer.play(); 
+         if (mediaplayer.getStatus()==PLAYING)
+        {
+             mediaplayer.pause();
+        }
     }
         
     
@@ -156,7 +158,10 @@ public class PanierController implements Initializable {
     @FXML
     private void retour(ActionEvent event) throws IOException 
     {
-        mediaplayer.stop();
+         if (mediaplayer.getStatus()==PLAYING)
+        {
+             mediaplayer.pause();
+        }
     Stage appStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
     appStage.close();
     }
@@ -164,6 +169,10 @@ public class PanierController implements Initializable {
     @FXML
     private void commander1(ActionEvent event) throws IOException 
     {
+         if (mediaplayer.getStatus()==PLAYING)
+        {
+             mediaplayer.pause();
+        }
         Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Parent root = FXMLLoader.load(getClass().getResource("/pi/gui/panier.fxml"));
         Scene scene = new Scene(root);
@@ -181,7 +190,10 @@ public class PanierController implements Initializable {
 
     @FXML
     private void map(ActionEvent event) throws IOException {
-       mediaplayer.stop();
+        if (mediaplayer.getStatus()==PLAYING)
+        {
+             mediaplayer.pause();
+        }
         Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Parent root = FXMLLoader.load(getClass().getResource("/pi/gui/panie.fxml"));
         Scene scene = new Scene(root);

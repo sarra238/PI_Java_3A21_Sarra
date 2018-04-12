@@ -66,7 +66,7 @@ public class AjoutRestoController implements Initializable {
         p.setLatitude((float) Double.parseDouble(alti.getText()));
         p.setLongitude((float) Double.parseDouble(longi.getText()));
         sp.AjouterRestaurant(p);
-        String[] s={"Ajout de restaurant réussi!"};
+        String[] s={"Add Done!"};
         v.sayMultiple(s);
         Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         primaryStage.close();

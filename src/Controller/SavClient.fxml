@@ -21,7 +21,7 @@
       <AnchorPane layoutX="38.0" layoutY="51.0" prefHeight="504.0" prefWidth="542.0" style="-fx-background-color: #FFFFFF;">
          <children>
             <Label layoutX="97.0" layoutY="81.0" text="Service aprés vente :" />
-            <ComboBox fx:id="combo" layoutX="218.0" layoutY="130.0" prefWidth="150.0" promptText="Select Sujet" />
+            <ComboBox fx:id="combo" layoutX="218.0" layoutY="130.0" prefHeight="25.0" prefWidth="206.0" promptText="Select Sujet" />
             <Label layoutX="137.0" layoutY="136.0" text="Sujet :" />
             <Label layoutX="140.0" layoutY="182.0" text="Message :" />
             <TextArea fx:id="msg" layoutX="215.0" layoutY="198.0" prefHeight="166.0" prefWidth="215.0" />
