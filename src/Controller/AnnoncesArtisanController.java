@@ -357,10 +357,10 @@ public class AnnoncesArtisanController implements Initializable {
         Annonce selectedItem = listAnnonce.getSelectionModel().getSelectedItem();
         String accessToken = "EAACEdEose0cBAIsEZCo1wFsyJ1KxRpPZBvH9zB2dUfZBTBDKfHL4eawweswa6p5U3lZBPe59B3gOZBcWF7RDRjhwH5waB2fLfzfFkwz88nGLVNqpt2LLmFbp4gLBzI485PIQ0huF3yBDG5NOGikOIZAprCvQqAIGRGZC0RnqpuCY0SvnLmKEWZBaAaL00qfcA0WxYYjnPZAQAmAZDZD";
         Scanner s = new Scanner(System.in);
+        File f=new File("C:\\wamp64\\www\\SoukI\\web\\imagesAnnonce\\"+selectedItem.getImage());
+        Image img=new Image(f.toURI().toString());
         FacebookClient fbClient = new DefaultFacebookClient(accessToken);
-        FacebookType response = fbClient.publish("me/feed", FacebookType.class,
-                Parameter.with("message", "Annonce" + selectedItem.getNomAnnonce()+ "\n" + selectedItem.getDescription()),
-                Parameter.with("link", "http://127.168.0.1/"));
+        FacebookType response = fbClient.publish("me/feed", FacebookType.class,Parameter.with("message", "Annonce" + selectedItem.getNomAnnonce()+ "\n" + selectedItem.getDescription()));
         System.out.println("fb.com/" + response.getId());
         Alert alert = new InputValidation().getAlert("Success", "Votre Annonce à été publié sur facebook!");
         alert.showAndWait();

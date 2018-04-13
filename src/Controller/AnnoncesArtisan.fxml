@@ -39,7 +39,7 @@
             <Button fx:id="SAV" layoutX="509.0" layoutY="11.0" mnemonicParsing="false" onAction="#Sav" style="-fx-background-color: #03224C;" text="SAV" textFill="WHITE" />
          </children>
       </AnchorPane>
-      <Button fx:id="partageFBBTn" layoutX="10.0" layoutY="361.0" mnemonicParsing="false" onAction="#partageFB" style="-fx-background-color: #03224C;" text="Partager" textFill="WHITE" />
+      <Button fx:id="partageFBBTn" layoutX="2.0" layoutY="361.0" mnemonicParsing="false" onAction="#partageFB" style="-fx-background-color: #03224C;" text="Partager sur Facebook" textFill="WHITE" />
       <PieChart fx:id="pie" layoutX="143.0" layoutY="363.0" prefHeight="207.0" prefWidth="478.0" stylesheets="@StatCss.css" />
       <TableView fx:id="tableCom" layoutX="271.0" layoutY="222.0" prefHeight="137.0" prefWidth="341.0" visible="false">
          <columns>
