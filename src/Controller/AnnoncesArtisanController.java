@@ -355,11 +355,11 @@ public class AnnoncesArtisanController implements Initializable {
     @FXML
     private void partageFB(ActionEvent event) {
         Annonce selectedItem = listAnnonce.getSelectionModel().getSelectedItem();
-        String accessToken = "EAACEdEose0cBAKth8cjasaQJd4UsqjVjfFoeWJdGckOoKeoNkucZBgZBU3fLi235INqb16NpETDvA0B0ztwFuO5ZBtgy4VBXBRZA5arZBwP8IzZAlOc5M2rXJBbsNRLWZAbkljvs2KyeZB9hz5x1XcqaHUZCyuZCNslvVZBxLAg2rCdYjql3P504byLWupg2X3jB3MB5sdSZBIw64gZDZD";
+        String accessToken = "EAACEdEose0cBAIsEZCo1wFsyJ1KxRpPZBvH9zB2dUfZBTBDKfHL4eawweswa6p5U3lZBPe59B3gOZBcWF7RDRjhwH5waB2fLfzfFkwz88nGLVNqpt2LLmFbp4gLBzI485PIQ0huF3yBDG5NOGikOIZAprCvQqAIGRGZC0RnqpuCY0SvnLmKEWZBaAaL00qfcA0WxYYjnPZAQAmAZDZD";
         Scanner s = new Scanner(System.in);
         FacebookClient fbClient = new DefaultFacebookClient(accessToken);
         FacebookType response = fbClient.publish("me/feed", FacebookType.class,
-                Parameter.with("message", "Annonce" + selectedItem.getNomAnnonce()+ " at" + selectedItem.getDescription()),
+                Parameter.with("message", "Annonce" + selectedItem.getNomAnnonce()+ "\n" + selectedItem.getDescription()),
                 Parameter.with("link", "http://127.168.0.1/"));
         System.out.println("fb.com/" + response.getId());
         Alert alert = new InputValidation().getAlert("Success", "Votre Annonce à été publié sur facebook!");
