@@ -174,7 +174,7 @@ public class PanierController implements Initializable {
              mediaplayer.pause();
         }
         Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        Parent root = FXMLLoader.load(getClass().getResource("/pi/gui/panier.fxml"));
+        Parent root=FXMLLoader.load(getClass().getResource("/pi/gui/panier.fxml"));
         Scene scene = new Scene(root);
         primaryStage.setTitle("roduits!");
         primaryStage.setScene(scene);
