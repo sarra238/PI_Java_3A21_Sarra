@@ -360,7 +360,9 @@ public class AnnoncesArtisanController implements Initializable {
         File f=new File("C:\\wamp64\\www\\SoukI\\web\\imagesAnnonce\\"+selectedItem.getImage());
         Image img=new Image(f.toURI().toString());
         FacebookClient fbClient = new DefaultFacebookClient(accessToken);
-        FacebookType response = fbClient.publish("me/feed", FacebookType.class,Parameter.with("message", "Annonce" + selectedItem.getNomAnnonce()+ "\n" + selectedItem.getDescription()));
+        FacebookType response = fbClient.publish("me/feed", FacebookType.class,
+                Parameter.with("message", "Annonce" + selectedItem.getNomAnnonce()+ "\n" + selectedItem.getDescription()),
+                Parameter.with("link","http://127.168.0.1/"));
         System.out.println("fb.com/" + response.getId());
         Alert alert = new InputValidation().getAlert("Success", "Votre Annonce à été publié sur facebook!");
         alert.showAndWait();
