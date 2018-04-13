@@ -16,7 +16,7 @@ public class MyConnection {
     private String usr="root";
      private String pwd="";
      Connection con;
-    public MyConnection(){
+    private MyConnection(){
     try {
       con= (Connection) DriverManager.getConnection(url, usr, pwd);
     }
