@@ -23,7 +23,6 @@ import javafx.util.Duration;
 import org.controlsfx.control.Notifications;
 import Entities.Produit;
 import services.MailT;
-import services.Mailtest;
 
 /**
  * FXML Controller class

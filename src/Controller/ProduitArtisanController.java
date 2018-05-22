@@ -36,7 +36,6 @@ import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import services.AnnonceServices;
 import services.ServiceProduit;
-import static services.UserService.conn;
 
 /**
  * FXML Controller class

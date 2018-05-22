@@ -206,7 +206,6 @@ alert.showAndWait();
             destinationFile.write(buffer, 0, nbLecture); 
         } 
     } catch (IOException e){ 
-        e.printStackTrace(); 
         return false; // Erreur 
     } 
     return true; // Résultat OK   

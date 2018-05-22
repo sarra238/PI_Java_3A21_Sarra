@@ -32,8 +32,6 @@ import services.ServiceProduitm;
 import services.Serviceconfcommande1;
 import services.UserService;
 import static services.UserService.conn;
-import static utils.util.pr;
-import static utils.util.user;
 
 /**
  * FXML Controller class

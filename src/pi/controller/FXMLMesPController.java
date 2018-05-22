@@ -5,7 +5,6 @@
  */
 package pi.controller;
 import static utils.util.somme;
-import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXListView;
 import java.io.IOException;
@@ -15,8 +14,6 @@ import java.sql.SQLException;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.animation.PauseTransition;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -49,7 +46,6 @@ import javafx.stage.Stage;
 import javafx.util.Callback;
 import javafx.util.Duration;
 import Entities.Produit;
-import services.ServiceProduit;
 import static services.ServiceProduit.searchcateg;
 import static services.ServiceProduit.searchcategdate;
 import static services.ServiceProduit.searchdate;
@@ -123,6 +119,7 @@ public class FXMLMesPController implements Initializable {
         panevoir.setVisible(false);
          data = selectLesProduitE();
           cherchernom.textProperty().addListener(new ChangeListener() {
+            @Override
             public void changed(ObservableValue observable, Object oldValue, Object newValue) {
                 filterList((String) oldValue, (String) newValue);
                 liste.refresh();

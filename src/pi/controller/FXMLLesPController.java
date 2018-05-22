@@ -44,11 +44,9 @@ import javafx.stage.Stage;
 import javafx.util.Callback;
 import Entities.Produit;
 import services.ServiceProduit;
-
 import static services.ServiceProduit.searchcateg1;
 import static services.ServiceProduit.searchcategdate1;
 import static services.ServiceProduit.searchdate1;
-import static services.ServiceProduit.selectLesProduitE;
 import static services.ServiceProduit.selectMesProduitE;
 
 /**

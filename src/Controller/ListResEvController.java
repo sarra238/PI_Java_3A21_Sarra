@@ -5,7 +5,6 @@
  */
 package Controller;
 
-import static Controller.AffichEventClientController.d;
 import Entities.Evenement;
 import Entities.ReserEv;
 import com.itextpdf.text.BaseColor;
@@ -21,7 +20,6 @@ import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 import java.awt.Desktop;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.MalformedURLException;

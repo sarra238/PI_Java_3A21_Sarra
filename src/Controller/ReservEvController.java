@@ -5,42 +5,21 @@
  */
 package Controller;
 
-import static Controller.AffichEventClientController.d;
-import static Controller.ListResEvController.evt;
 import Entities.Evenement;
 import Entities.ReserEv;
 import Entities.User;
 import Entities.notifEvent;
-import com.itextpdf.text.BaseColor;
-import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
-import com.itextpdf.text.Element;
-import com.itextpdf.text.Font;
-import com.itextpdf.text.FontFactory;
-import com.itextpdf.text.Paragraph;
-import com.itextpdf.text.Phrase;
-import com.itextpdf.text.pdf.PdfPCell;
-import com.itextpdf.text.pdf.PdfPTable;
-import com.itextpdf.text.pdf.PdfWriter;
-import java.awt.Desktop;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URI;
-import java.net.URISyntaxException;
 import java.net.URL;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 import java.util.Properties;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import java.util.stream.Stream;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -55,7 +34,6 @@ import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javax.mail.Message;
 import javax.mail.MessagingException;
@@ -64,12 +42,10 @@ import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
-import services.CommentEventServices;
 import services.EvenementServices;
 import services.ReserEvServices;
 import static services.ReserEvServices.pass;
 import services.UserService;
-import static services.UserService.conn;
 import services.notifEventServices;
 
 /**
@@ -98,6 +74,8 @@ public class ReservEvController implements Initializable {
  public static ReserEv id;
     /**
      * Initializes the controller class.
+     * @param url
+     * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -177,8 +155,7 @@ public class ReservEvController implements Initializable {
 }}
 public void notification(ReserEv r){
      UserService us = new UserService();
-        User u = new User();
-      u = us.RechercherUsertById(conn);
+        User u ;
         notifEventServices rs = new notifEventServices();
           notifEvent a = new notifEvent(); 
          int s= r.getUserId();
